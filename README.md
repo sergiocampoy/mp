@@ -9,7 +9,7 @@
 * Compilación separada (ubuntu)
 ```shell
 # Crea ficheros objeto
-g++ -c -std=c++11 *.cpp -o *.o -Iinclude
+g++ -c -std=c++11 src/*.cpp -o obj/*.o -Iinclude
 
 # Crea librerías a partir de los objetos
 ar rvs lib/*.a obj/*.o
