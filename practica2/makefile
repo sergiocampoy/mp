@@ -27,7 +27,7 @@ $(LIB)/libinter.a : $(OBJ)/intervalo.o
 
 clean :
 	@echo "Limpiando archivos..."
-	rm -f $(OBJ)/* $(BIN)/* $(LIB)/* $(DOC)/latex $(DOC)/html
+	rm -f -r $(OBJ)/* $(BIN)/* $(LIB)/* $(DOC)/latex $(DOC)/html
 
 zip : clean
 	@echo "Generando ZIP..."
