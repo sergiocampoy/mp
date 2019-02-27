@@ -63,10 +63,31 @@ bool Intervalo::dentroCotaSup()const {
     return cerradoSup;
 }
 
-
 void Intervalo::setIntervalo(double cinf, double csup, bool cerrinf, bool cerrsup){
-//...
-COMPLETAR
+    // Si no es válido, no modifica el intervalo
+    if (valido (cinf, csup, cerrinf, cerrsup)) {
+        cotaInf = cinf;
+        cotaSup = csup;
+        cerradoInf = cerrinf;
+        cerradoSup = cerrsup;
+    }
+}
+
+bool Intervalo::esVacio ()const {
+    return ((cotaInf == cotaSup) && (cerradoInf == false) && (cerradoInf == false));
+}
+
+bool Intervalo::estaDentro (double n)const {
+    bool flag = false;
+
+    if (cotaInf < n && n < cotaSup)
+        flag = true;
+    if (n == cotaInf && cerradoInf)
+        flag = true;
+    if (n == cotaSup && cerradoSup)
+        flag = true;
+
+    return flag;
 }
 
 /*NO CAMBIAR */
@@ -105,5 +126,46 @@ void leer(Intervalo & obj){
     obj.setIntervalo(cotaInf, cotaSup, cerradoInf, cerradoSup);
 }
 
+void comprobarVacio (Intervalo i) {
+    escribir (i);
+    if (i.esVacio())
+        cout << " es vacio" << endl;
+    else
+        cout << " no es vacio" << endl;
+}
+
 //COMPLETAR TOMANDO COMO REFERENCIA .h
-... interseccion()
+Intervalo interseccion(Intervalo i1, Intervalo i2) {
+    double cotaInf, cotaSup;
+    bool cerradoInf, cerradoSup;
+
+    // Cálculo de la cota inferior
+    if (i1.getCotaInf() > i2.getCotaInf()) {
+        cotaInf = i1.getCotaInf();
+        cerradoInf = i1.dentroCotaInf();
+    }
+    else if (i2.getCotaInf() > i1.getCotaInf()) {
+        cotaInf = i2.getCotaInf();
+        cerradoInf = i2.dentroCotaInf();
+    }
+    else {
+        cotaInf = i1.getCotaInf();
+        cerradoInf = (i1.dentroCotaInf() && i2.dentroCotaInf());
+    }
+
+    // Cálculo de la cota superior
+    if (i1.getCotaSup() < i2.getCotaSup()) {
+        cotaSup = i1.getCotaSup();
+        cerradoSup = i1.dentroCotaSup();
+    }
+    else if (i2.getCotaSup() < i1.getCotaSup()) {
+        cotaSup = i2.getCotaSup();
+        cerradoSup = i2.dentroCotaSup();
+    }
+    else {
+        cotaSup = i1.getCotaSup();
+        cerradoSup = (i1.dentroCotaSup() && i2.dentroCotaSup());
+    }
+
+    return (Intervalo (cotaInf, cotaSup, cerradoInf, cerradoSup));
+}
