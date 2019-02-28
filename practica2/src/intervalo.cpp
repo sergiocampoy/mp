@@ -73,23 +73,6 @@ void Intervalo::setIntervalo(double cinf, double csup, bool cerrinf, bool cerrsu
     }
 }
 
-bool Intervalo::esVacio ()const {
-    return ((cotaInf == cotaSup) && (cerradoInf == false) && (cerradoInf == false));
-}
-
-bool Intervalo::estaDentro (double n)const {
-    bool flag = false;
-
-    if (cotaInf < n && n < cotaSup)
-        flag = true;
-    if (n == cotaInf && cerradoInf)
-        flag = true;
-    if (n == cotaSup && cerradoSup)
-        flag = true;
-
-    return flag;
-}
-
 /*NO CAMBIAR */
 
 void escribir(const Intervalo & obj) {
@@ -135,6 +118,24 @@ void comprobarVacio (Intervalo i) {
 }
 
 //COMPLETAR TOMANDO COMO REFERENCIA .h
+
+bool Intervalo::esVacio ()const {
+    return ((cotaInf == cotaSup) && (cerradoInf == false) && (cerradoInf == false));
+}
+
+bool Intervalo::estaDentro (double n)const {
+    bool flag = false;
+
+    if (cotaInf < n && n < cotaSup)
+        flag = true;
+    if (n == cotaInf && cerradoInf)
+        flag = true;
+    if (n == cotaSup && cerradoSup)
+        flag = true;
+
+    return flag;
+}
+
 Intervalo interseccion(Intervalo i1, Intervalo i2) {
     double cotaInf, cotaSup;
     bool cerradoInf, cerradoSup;
