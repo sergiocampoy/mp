@@ -21,39 +21,26 @@ using namespace std;
 
 
 int main(){
-/*
     const int CAPACIDAD = 10;
     int i, nintervalos=0;
+    Intervalo i1, i2, resultado;
 
-    cout << "Cuantos intervalos (max 10):";
+    do {
+//        cout << "Cuantos intervalos (max 10):";
+        cin >> nintervalos;
+    } while ((nintervalos < 2) || (nintervalos > CAPACIDAD));
 
-    cin >> nintervalos;
-
-    cout << "Introduce [ o ( cotaInferior, cotaSuperior ) o ]";
-    for(i=0; i < nintervalos; i++)
-        leer();
-
-...
-    escribir(resultado);
-    }
-*/
-    Intervalo i1, i2;
-/*
-    cout << "Introduce 2 intervalos:" << endl;
-    cout << "\tIntroduce el primer intervalo: ";
-    leer(i1);
-    cout << "\tIntroduce el segundo intervalo: ";
-    leer(i2);
-*/
-    int n;
-    cin >> n;
+//    cout << "Introduce [ o ( cotaInferior, cotaSuperior ) o ]";
 
     leer (i1);
-    leer (i2);
+    // Lee un nuevo intervalo y hace la intersección entre este y el resultado anterior
+    for(i=0; i < nintervalos - 1; i++) {
+        leer(i2);
+        resultado = interseccion (i1, i2);
+        i1 = resultado;
+    }
 
-    Intervalo resultado = interseccion (i1, i2);
-
-    escribir (resultado);
+    escribir(resultado);
     cout << endl;
     return 0;
 }
