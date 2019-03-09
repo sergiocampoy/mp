@@ -1,6 +1,6 @@
 # Metodología de la Programación :octocat:
 
-## *[<img src="/data/viyuela.png" width="50" height="50"/>Óscar Antúnez Martinaitis](https://es.pornhub.com/users/oscarntnz "Perfil de github")* y *[<img src="/data/sgcm.png" width="50" height="50"/>Sergio Campoy Maldonado](https://github.com/sergioguaka "Perfil de github")*
+## *[<img src="/data/viyuela_.png" width="50" height="50"/>Óscar Antúnez Martinaitis](https://es.pornhub.com/users/oscarntnz "Perfil de github")* y *[<img src="/data/sgcm_.png" width="50" height="50"/>Sergio Campoy Maldonado](https://github.com/sergioguaka "Perfil de github")*
 
 
 
