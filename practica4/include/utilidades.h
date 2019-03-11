@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   utilidades.h
  * Author: acid
  *
@@ -39,7 +39,7 @@ void imprimirArray(const double array[],int util_array);
  */
 void  mezclarUnico(double [], int ,  double [], int , double [], int  );
 /**
- * @brief un método de ordenacion que reciba 
+ * @brief un método de ordenacion que reciba
  * @param v vecotr de double
  * @param util_v entero numero de elementos utiles
  * @param asc bool ascendente, false si es descendente
@@ -48,10 +48,10 @@ void ordenar(double [], int , bool asc);
 
 /**
  * @brief devuelve sobre el mismo vector el resultado sin valores repetidos
- * @param array1 vector de entrada/salida 
+ * @param array1 vector de entrada/salida
  * @param utilArray1 numero de componentes actuales de salida
  */
-void unico (double [], int );
+void unico (double array1 [], int &utilArray1);
 
 /**
  * @brief concatena en un tercer vector  el contenido de dos arrays
@@ -62,8 +62,7 @@ void unico (double [], int );
  * @param arraySalida vector de salida
  * @param util_salida numero de componentes de vector arraySalida,  de salida
  */
-void concatenar( double [], int ,  double [], int , double [], int );
+void concatenar(const double array1 [], int utilArray1, const double array2 [], int utilArray2, double arraySalida [], int &util_salida);
 
 
 #endif /* UTILIDADES_H */
-

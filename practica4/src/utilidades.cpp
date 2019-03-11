@@ -1,7 +1,7 @@
 /**
  * Fichero de implementacion de las funciones que se piden
  */
-#include <iostream> 
+#include <iostream>
 #include "utilidades.h"
 using namespace std;
 
@@ -40,12 +40,32 @@ void  mezclarUnico(double [], int ,  double [], int , double [], int  ){
 }
 
 void ordenar(double [], int , bool asc){
-    
-}
-void unico (double [], int ){
-    
-}
-void concatenar( double [], int ,  double [], int , double [], int ){
-    
+
 }
 
+void unico (double array1 [], int &utilArray1) {
+    int totalUtilizados = 1;
+    bool duplicado;
+
+    for (int i = 1; i < utilArray1; i++) {
+        duplicado = false;
+
+        for (int j = 0; j < totalUtilizados && !duplicado; j++)
+//            duplicado = (array1 [i] == array1 [j]);
+            if (array1 [i] == array1 [j])
+                duplicado = true;
+
+        if (!duplicado)
+            array1 [totalUtilizados++] = array1 [i];
+    }
+
+    utilArray1 = totalUtilizados;
+}
+
+void concatenar(const double array1 [], int utilArray1, const double array2 [], int utilArray2, double arraySalida [], int &util_salida){
+    for (util_salida = 0; util_salida < utilArray1; util_salida++)
+        arraySalida [util_salida] = array1 [util_salida];
+
+    for (; util_salida < utilArray1 + utilArray2; util_salida++)
+        arraySalida [util_salida] = array2 [util_salida - utilArray1];
+}
