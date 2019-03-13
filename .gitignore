@@ -2,6 +2,15 @@
 #################
 practica?.zip
 
+# Archivos de salida #
+######################
+salida?.txt
+bin/*
+lib/*.a
+obj/*.o
+doc/html/
+doc/latex/
+
 # Tests #
 #########
 *_t.*
