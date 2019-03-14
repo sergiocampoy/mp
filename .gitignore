@@ -11,6 +11,11 @@ obj/*.o
 doc/html/
 doc/latex/
 
+# Archivos de NetBeans #
+########################
+build/*
+dist/*
+
 # Tests #
 #########
 *_t.*
