@@ -37,10 +37,23 @@ void imprimirArray(const double array[],int util_array);
  * @param util_salida de salida
  * @pre los dos arrays deben estar ordenados
  */
-int  mezclarUnico(const double array1[], int utilArray1, const double array2[], 
+int  mezclarUnico(const double array1[], int utilArray1, const double array2[],
+                    int utilArray2, double resultado[], int & utilResultado);
+
+/**
+ * @brief Realiza una mezcla sin introducir elementos comunes en arraySalida
+ * @param array1 vector de entrada
+ * @param utilArray1
+ * @param array2 vector de entrada
+ * @param utilArray2
+ * @param arraySalida vector de salida
+ * @param util_salida de salida
+ * @pre los dos arrays deben estar ordenados
+ */
+int  mezclarUnico2 (const double array1[], int utilArray1, const double array2[],
                     int utilArray2, double resultado[], int & utilResultado);
 /**
- * @brief un método de ordenacion que reciba
+ * @brief ordena por burbuja
  * @param v vecotr de double
  * @param util_v entero numero de elementos utiles
  * @param asc bool ascendente, false si es descendente
