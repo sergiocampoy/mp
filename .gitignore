@@ -13,8 +13,8 @@ doc/latex/
 
 # Archivos de NetBeans #
 ########################
-build/*
-dist/*
+build/
+dist/
 
 # Tests #
 #########
