@@ -49,20 +49,93 @@ int  mezclarUnico(const double array1[], int utilArray1, const double array2[],
 
 }
 
-int  mezclarUnico2 (const double array1[], int utilArray1, const double array2[],
-                    int utilArray2, double resultado[], int & utilResultado){
-    int i = 0, j = 0;
-    utilResultado = 0;
+int  mezclarUnico2 (const double array1[], int utilArray1, const double array2[], int utilArray2, double resultado[], int & utilResultado){
 
-    if (utilArray1 == 0 && utilArray2 == 0) {
-        // No hacer nada
+int i = 0, j = 0;
+utilResultado = 0;
+
+// Escribe el primer valor en el vector resultado
+if (utilArray1 > 0 && utilArray2 == 0) {
+    resultado [utilResultado++] = array1 [i++];
+}
+else if (utilArray1 == 0 && utilArray2 > 0) {
+    resultado [utilResultado++] = array2 [j++];
+}
+else if (utilArray1 > 0 && utilArray2 > 0) {
+    if (array1 [i] < array2 [j]) {
+        resultado [utilResultado++] = array1 [i++];
     }
-    else if (utilArray1 == 0) {
-        //
+    else {
         resultado [utilResultado++] = array2 [j++];
     }
-    else if (utilArray2 == 0) {
+}
+
+// Bucle principal
+while (i < utilArray1 && j < utilArray2) {
+    if (array1 [i] < array2 [j]) {
+        if (array1 [i] > resultado [utilResultado - 1]) {
+            resultado [utilResultado++] = array1 [i];
+        }
+        i++;
+    }
+    else {
+        if (array2 [j] > resultado [utilResultado - 1]) {
+            resultado [utilResultado++] = array2 [j];
+        }
+        j++;
+    }
+}
+
+// Caso: Sale del bucle principal por terminar array2
+while (i < utilArray1) {
+    if (array1 [i] > resultado [utilResultado - 1])
+        resultado [utilResultado++] = array1 [i];
+    i++;
+}
+
+// Caso: Sale del bucle principal por terminar array1
+while (j < utilArray2) {
+    if (array2 [j] > resultado [utilResultado - 1])
+        resultado [utilResultado++] = array2 [j];
+    j++;
+}
+
+return utilResultado;
+}
+
+/*
+int  mezclarUnico2_OG (const double array1[], int utilArray1, const double array2[], int utilArray2, double resultado[], int & utilResultado) {
+int i = 0, j = 0;
+utilResultado = 0;
+
+if (utilArray1 == 0 && utilArray2 == 0) {
+    // No hacer nada
+}
+else if (utilArray1 == 0) {
+    //
+    resultado [utilResultado++] = array2 [j++];
+}
+else if (utilArray2 == 0) {
+    resultado [utilResultado++] = array1 [i++];
+}
+else {
+    if (array1 [i] == array2 [j]) {
+        resultado [utilResultado++] = array1 [i];
+        i++;
+        j++;
+    }
+    else if (array1 [i] < array2 [j])
         resultado [utilResultado++] = array1 [i++];
+
+    else
+        resultado [utilResultado++] = array2 [j++];
+}
+
+
+while (i < utilArray1 && j < utilArray2) {
+    if (resultado [utilResultado - 1] == array1 [i] && resultado [utilResultado - 1] == array2 [i]) {
+        i++;
+        j++;
     }
     else {
         if (array1 [i] == array2 [j]) {
@@ -70,48 +143,29 @@ int  mezclarUnico2 (const double array1[], int utilArray1, const double array2[]
             i++;
             j++;
         }
-        else if (array1 [i] < array2 [j])
+        else if (array1 [i] > resultado [utilResultado - 1])
             resultado [utilResultado++] = array1 [i++];
-
-        else
+        else if (array2 [j] > resultado [utilResultado - 1])
             resultado [utilResultado++] = array2 [j++];
     }
-
-
-    while (i < utilArray1 && j < utilArray2) {
-        if (resultado [utilResultado - 1] == array1 [i] && resultado [utilResultado - 1] == array2 [i]) {
-            i++;
-            j++;
-        }
-        else {
-            if (array1 [i] == array2 [j]) {
-                resultado [utilResultado++] = array1 [i];
-                i++;
-                j++;
-            }
-            else if (array1 [i] > resultado [utilResultado - 1])
-                resultado [utilResultado++] = array1 [i++];
-            else if (array2 [j] > resultado [utilResultado - 1])
-                resultado [utilResultado++] = array2 [j++];
-        }
-    }
-
-    while (i < utilArray1) {
-        if (array1 [i] > resultado [utilResultado - 1])
-            resultado [utilResultado++] = array1 [i];
-        i++;
-    }
-
-    while (j < utilArray2) {
-        if (array2 [j] > resultado [utilResultado - 1])
-            resultado [utilResultado++] = array2 [j];
-        j++;
-    }
-
-    int util = utilResultado;
-    return util;
 }
 
+while (i < utilArray1) {
+    if (array1 [i] > resultado [utilResultado - 1])
+        resultado [utilResultado++] = array1 [i];
+    i++;
+}
+
+while (j < utilArray2) {
+    if (array2 [j] > resultado [utilResultado - 1])
+        resultado [utilResultado++] = array2 [j];
+    j++;
+}
+
+int util = utilResultado;
+return util;
+}
+*/
 void ordenar(double array1[], int utilArray1, bool asc){
 
    double auxiliar;
