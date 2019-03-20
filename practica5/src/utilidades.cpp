@@ -32,3 +32,24 @@ int localizarSubcadena (const char cadena[], const char subcadena[]) {
 
     return posLectura;
 }
+
+bool insertarCadena (const char cadenaBase[], const char aInsertar[], int posicion, char resultado[]){
+
+    int utilResultados = 0;
+    bool flag = false;
+    
+    while(cadenaBase[utilResultados] != '/0'){
+        resultado[utilResultados] = cadenaBase[utilResultados];
+        utilResultados++;
+    }
+    
+    if(posicion >=0 && posicion <= utilResultados){
+        for(int i=0; aInsertar[i] =! '/0' ; i++){
+            resultado[utilResultados+i] = cadenaBase[utilResultados];
+            utilResultados++;
+        }
+        flag = true;
+    }
+    
+    return flag;
+}

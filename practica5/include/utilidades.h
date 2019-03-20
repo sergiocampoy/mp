@@ -1,3 +1,6 @@
+//Alumno1: Campoy Maldonado, Sergio
+//Alumno2: Antunez Martinaitis, Oscar
+
 #ifndef _UTILIDADES_H_
 #define _UTILIDADES_H_
 
@@ -16,7 +19,9 @@ int localizarSubcadena (const char cadena[], const char subcadena[]);
  * @param posicion posicion en cadenaBase donde se hace la insercion
  * @param resultado cadena resultante (se asume con tam. suficiente)
  * @return
- */
-bool insertarCadena (char cadenaBase[], char aInsertar[], int posicion, char resultado[]);
+ *///Algoritmo que copia cadenaBase a resultado y en funcion de que si posicion
+    //es valido, inserta aInsertar. Devuelve un bool segun si se ha procesado 
+    //correctamente
+bool insertarCadena (const char cadenaBase[], const char aInsertar[], int posicion, char resultado[]);
 
 #endif
