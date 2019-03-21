@@ -46,7 +46,7 @@ bool insertarCadena (const char cadenaBase[], const char aInsertar[], int posici
     if(posicion >=0 && posicion <= utilResultados){
         for(int i=0; aInsertar[i] =! '/0' ; i++){
             resultado[utilResultados+i] = cadenaBase[utilResultados];
-            utilResultados++;
+
         }
         flag = true;
     }
