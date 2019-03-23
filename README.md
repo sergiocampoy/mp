@@ -47,6 +47,6 @@ make nombreRegla
 ## 4. [Práctica 4](./practica4) (15/03/19)
 * Ordenación y concatenación de arrays
 
-```c++
-#include "pepeViyuela.h"
-```
+## 5. [Práctica 5](./practica5) (23/03/19)
+* Búsqueda de subcadenas
+* Inserción de cadenas en otras cadenas
