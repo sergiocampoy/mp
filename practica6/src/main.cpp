@@ -1,7 +1,4 @@
 #include "utilidades.h"
-#include <iostream>
-
-using namespace std;
 
 int main () {
     const int TAM = 100;
@@ -11,14 +8,14 @@ int main () {
     int utilResultado;
 
     leerContenido (array, totalUtilizados);
-/*
-    const int *min, *max;
+
+   /* const int *min, *max;
 
     hallarMinMax (array, totalUtilizados, min, max);
 
-    cout << "min: " << *min << ", max: " << *max << endl;
-*/
-    obtenerMayorSecuenciaMonotonaCreciente (array, totalUtilizados, resultado, utilResultado);
+    cout << "min: " << *min << ", max: " << *max << endl;*/
 
-    imprimirArray (resultado, utilResultado);
+   obtenerMayorSecuenciaMonotonaCreciente (array, totalUtilizados, resultado, utilResultado);
+
+   imprimirArray (resultado, utilResultado);
 }

@@ -1,7 +1,4 @@
-
 #include "utilidades.h"
-using namespace std;
-
 
 void leerContenido(int *coleccion, int & util){
     do{
@@ -37,7 +34,7 @@ void imprimirArray(const int *array, int utilArray) {
  */
 
 void obtenerMayorSecuenciaMonotonaCreciente(const int *array, int utilArray, const int *&secuenciaCreciente, int &utilSecuenciaCreciente) {
-    const int *p;   // Apuntador
+    const int *p;           // Apuntador
 
     const int *posRacha;    // Pos inicio de la cadena con mejor racha temp
     posRacha = array;
@@ -74,7 +71,7 @@ void hallarMinMax(const int *array, int utilArray, const int *&pmin, const int *
     pmin = array;
     pmax = array;
 
-    for (p = array; p < array + utilArray; p++) {
+    for (p = array; p < (array + utilArray); p++) {
         if (*p < *pmin)
             pmin = p;
 
