@@ -1,6 +1,6 @@
 # Metodología de la Programación :octocat:
 
-## *[<img src="/data/viyuela_.png" width="50" height="50"/>Óscar Antúnez Martinaitis](https://es.pornhub.com/users/oscarntnz "Perfil de github")* y *[<img src="/data/sgcm_.png" width="50" height="50"/>Sergio Campoy Maldonado](https://github.com/sergioguaka "Perfil de github")*
+## *[<img src="/data/viyuela_.png" width="50" height="50"/>Óscar Antúnez Martinaitis](https://github.com/oscarntnz "Perfil de github")* y *[<img src="/data/sgcm_.png" width="50" height="50"/>Sergio Campoy Maldonado](https://github.com/sergioguaka "Perfil de github")*
 
 
 
@@ -43,6 +43,15 @@ make nombreRegla
 * Struct valor
 * [NetBeans](https://netbeans.org "Yay")
 
+```makefile
+# Copiar en todos los makefiles para entregar
+zip: clobber
+	rm -rf zip/*
+	rm -rf dist/*
+	rm -rf doc/html doc/latex
+	zip -r zip/practicaX.zip * -x nbproject/private/*
+```
+
 
 ## 4. [Práctica 4](./practica4) (15/03/19)
 * Ordenación y concatenación de arrays
@@ -50,3 +59,6 @@ make nombreRegla
 ## 5. [Práctica 5](./practica5) (23/03/19)
 * Búsqueda de subcadenas
 * Inserción de cadenas en otras cadenas
+
+## 6. [Práctica 6](./practica6) (29/03/19)
+* Recorrido de arrays con punteros
