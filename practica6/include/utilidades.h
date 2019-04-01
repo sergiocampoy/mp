@@ -1,3 +1,6 @@
+//Alumno 1: Antunez Martinaitis, Oscar
+//Alumno 2: Campoy Maldonado, Sergio
+
 #ifndef UTILIDADES_H
 #define UTILIDADES_H
 #include <iostream>
