@@ -62,3 +62,6 @@ zip: clobber
 
 ## 6. [Práctica 6](./practica6) (29/03/19)
 * Recorrido de arrays con punteros
+
+## 7. [Práctica 7](./practica7) (05/04/19)
+* Ordenación de un array de Valores con punteros
