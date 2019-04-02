@@ -18,6 +18,13 @@ const int CAPACIDAD = 20;
 void leerContenido(Valor coleccion[], int & util);
 
 /**
+ * @brief muestra el contenido de un vector de valores, numero de componentes y cada struct valor
+ * @param coleccion vector de entrada
+ * @param util numero de componentes validos
+ */
+void mostrarContenido( Valor const coleccion[], int util);
+
+/**
 * @brief muestra el contenido de un vector de valores, numero de c
 * @param coleccion vector de punteros a los registros
 * @param util numero de componentes validos
