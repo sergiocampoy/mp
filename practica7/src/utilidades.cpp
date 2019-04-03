@@ -36,9 +36,36 @@ void mostrarContenido(Valor const coleccion[], int util){
 }
 
 void mostrarContenido (Valor const **coleccion, int util) {
-
+    cout << util << " ";
+    for (int i = 0; i < util; i++) {
+        coleccion[i]->mostrar();
+        if (i < util - 1)
+            cout << " -- ";
+    }
+    cout << endl;
 }
 
-void ordenarPunteros (const Valor *array, const Valor **parray, int util) {
+void ordenarPunteros (const Valor * const array, const Valor **parray, int util) {
+    
+    if(util > 0){
+        
+        const Valor *aux = 0;
+        
+        for(int i=0; i < util; i++) //Inicializacion de parray
+            parray[i] = array+i;
+    
+        for(int i=0; i < util; i++){
+            for(int j=i; j < util; j++){
+                if(parray[i]->valor > parray[j]->valor){
+                    aux = parray[i];
+                    parray[i] = parray[j];
+                    parray[j] = aux;
+                }
+            }
+        }
+    }
+    else{
+        parray = 0;
+    }
 
 }
