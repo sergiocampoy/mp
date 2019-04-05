@@ -15,6 +15,9 @@ doc/latex/
 ########################
 build/
 dist/
+nbproject/
+.dep.inc
+Makefile
 
 # Tests #
 #########
