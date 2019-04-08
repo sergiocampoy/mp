@@ -1,3 +1,5 @@
+// Alumno 1: Campoy Maldonado Sergio
+// Alumno 2: Antúnez Martinaitis Óscar
 
 #ifndef VALOR_H
 #define VALOR_H
@@ -11,6 +13,6 @@ struct Valor{
     double valor;
 Valor();
 Valor(int , int, double );
-void mostrar() const; 
+void mostrar() const;
 };
 #endif //VALOR_H

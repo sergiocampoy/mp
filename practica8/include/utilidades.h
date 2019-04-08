@@ -1,6 +1,5 @@
-//
-// Editado por acid 25/02/19
-//
+// Alumno 1: Campoy Maldonado Sergio
+// Alumno 2: Antúnez Martinaitis Óscar
 
 #ifndef UTILIDADES_H
 #define UTILIDADES_H
