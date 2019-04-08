@@ -65,3 +65,6 @@ zip: clobber
 
 ## 7. [Práctica 7](./practica7) (05/04/19)
 * Ordenación de un array de Valores con punteros
+
+## 8. [Práctica 8](./practica8) (12/04/19)
+* [Práctica 3](./practica3) pero con memoria dinámica
