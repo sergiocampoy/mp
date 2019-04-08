@@ -14,14 +14,14 @@
  * @param array vector de entreda/salida
  * @param util_array
  */
-void reservar(Valor *array, int util_array);
+void reservar(Valor *&array, int util_array);
 
 /**
- * @brief libera el espacio reservado 
+ * @brief libera el espacio reservado
  * @param array vector de entreda/salida
  * @param util_array
  */
-void liberar(Valor *array);
+void liberar(Valor *&array);
 /**
  * @brief rellena un vector de valores con util valores
  * @param coleccion
@@ -46,5 +46,9 @@ void mostrarContenido( Valor const coleccion[], int util);
  * @param resultado
  * @return el numero de componentes del vector resultado
  */
-int combinarSuma(Valor *coleccion1, int util1, Valor  *coleccion2, int util2, Valor *resultado);
+int combinarSuma(Valor *coleccion1, int util1, Valor  *coleccion2, int util2, Valor *&resultado);
+
+int buscarPareja(const Valor &aBuscar, const Valor *array, int util);
+
+
 #endif //UTILIDADES_H
