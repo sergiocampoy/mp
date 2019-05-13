@@ -4,6 +4,7 @@
 #include "miniwin.h"
 #include "pelota.h"
 #include <iostream>
+#include <fstream>
 using namespace miniwin;
 
 const int RADIO = 20;
@@ -56,30 +57,63 @@ void mueve_pelota(Bola& P) {
 }
 
 int main() {
+  // Inicializa la semilla para aleatorio()
   srand(time(0));
-   vredimensiona(800, 600);
-//   Pelota a(50.0, 50.0, 4.0, 8.0, 15, PColor::VERDE);
-//   Pelota b(175.0, 370.0, 16.0, 17.0, 10, PColor::ROJO);
-//   Pelota c(20.0, 40.0, 100.0, 12.0, 20, PColor::AZUL);
 
-    Pelotas v;
+  char cad[64];
+  int ancho;
+  int alto;
+  int numeroPelotas;
+  float x, y, dx, dy, radio;
+  PColor color;
 
-   std::cout << a.getX() << ", " << a.getY() << std::endl;
 
-   while (tecla() != ESCAPE) {
-      borra();
-      for (int i = 0; i < obtenerUtil(); i++) {
-
+  std::ifstream fentrada;
+  fentrada.open("data/pelotas.txt");
+  if (fentrada) {
+    fentrada >> cad;
+    if (cad == "MP-PELOTAS-T-1.0") {
+      fentrada >> ancho >> alto;
+      fentrada >> numeroPelotas;
+      Pelotas partida(numeroPelotas);
+      for (int i = 0; i < numeroPelotas; i++) {
+        fentrada >> x >> y >> dx >> dy >> radio;
+        fentrada >> cad;
+        if (cad == "ROJO") {
+          color = PColor::ROJO;
+        } else {
+          color = PColor::VERDE;
+        }
       }
-      a.mover();
-      b.mover();
-      c.mover();
-      a.pintar();
-      b.pintar();
-      c.pintar();
-      refresca();
-      espera(25);
-   }
-   vcierra();
-   return 0;
+    } else {
+      std::cerr << "El fichero no es adecuado" << std::endl;
+    }
+  } else {
+    std::cerr << "Error de apertura del fichero" << std::endl;
+  }
+  fentrada.close
+
+
+  vredimensiona(800, 600);
+  //  Pelota a(50.0, 50.0, 4.0, 8.0, 15, PColor::VERDE);
+  //  Pelota b(175.0, 370.0, 16.0, 17.0, 10, PColor::ROJO);
+  //   Pelota c(20.0, 40.0, 100.0, 12.0, 20, PColor::AZUL);
+
+  Pelotas v;
+
+  std::cout << a.getX() << ", " << a.getY() << std::endl;
+
+  while (tecla() != ESCAPE) {
+    borra();
+    a.mover();
+    b.mover();
+    c.mover();
+    a.pintar();
+    b.pintar();
+    c.pintar();
+    refresca();
+    espera(25);
+  }
+  vcierra();
+  return 0;
 }

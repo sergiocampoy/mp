@@ -6,6 +6,8 @@ using namespace miniwin;
 #include <cmath>
 #include <ctime>
 #include <cstdlib>
+#include <fstream>
+#include <iostream>
 
 float Pelota::aleatorio(float tope) {
   return (rand() % (int)(tope) + 1);
