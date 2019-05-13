@@ -47,7 +47,7 @@ float Pelota::distancia(const Pelota& otra)const {
   return (sqrt(deltaX*deltaX + deltaY*deltaY));
 }
 
-bool Pelota::colisionado(const Pelota& otra)const {
+bool Pelota::colisionado(const Pelota& otra)const { //Sustituir UMBRAL por la suma de los radios
   return (distancia(otra) < UMBRAL);
 }
 
