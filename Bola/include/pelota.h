@@ -53,37 +53,3 @@ public:
 };
 
 #endif
-
-// Clase pelotas
-
-#ifndef PELOTAS_H_
-#define PELOTAS_H_
-
-class Pelotas {
-private:
-  Pelota* v;
-  int capacidad;
-  int util;
-  Pelota* reservar(int n);
-  void liberar(Pelota*& array);
-public:
-  // Constructores
-  Pelotas();
-  Pelotas(Pelota *v, int util);
-
-  // Destructor
-  ~Pelotas();
-
-  inline int obtenerUtil()const {
-    return util;
-  }
-
-  inline Pelota obtenerPelota(int indice)const {
-    return v[indice];
-  }
-
-  void borrar(int indice);
-  void aniadir(const Pelota& pelota);
-};
-
-#endif
