@@ -6,26 +6,29 @@ private:
   Pelota* v;
   int capacidad;
   int util;
-  Pelota* reservar(int n);
-  void liberar(Pelota*& array);
+  inline Pelota* reservar(int n) {
+    Pelota* array = nullptr;
+    array = new Pelota[n];
+    return array;
+  }
+  inline void liberar(Pelota*& array) {
+    if (array != nullptr) {
+      delete[] array;
+    }
+  }
 public:
-
+// TODO operator= & copia
 Pelotas();
+Pelotas(int capacidad);
 Pelotas(Pelota *v, int util);
+Pelotas(const Pelotas& otra);
 inline ~Pelotas() {
   liberar(v);
 }
-inline Pelota* reservar(int n) {
-  Pelota* array = nullptr;
-  array = new Pelota[n];
-  return array;
-}
-inline void liberar(Pelota*& array) {
-  if (array != nullptr) {
-    delete[] array;
-  }
-}
 void borrar(int indice);
 void aniadir(const Pelota& pelota);
+void mover();
+};
+
 
 #endif

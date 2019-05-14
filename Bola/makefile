@@ -12,7 +12,7 @@ DOC=./doc
 # Opciones de compilación
 # -Wall muestra todas las advertencias
 # -g compila en modo "depuración"
-OPT= -std=c++11 -Wall -g 
+OPT= -std=c++11 -Wall -g
 # Nombre de la práctica
 PRJ=bola
 
@@ -21,18 +21,21 @@ PRJ=bola
 
 all : $(BIN)/$(PRJ)
 
-$(BIN)/$(PRJ) : $(OBJ)/main.o $(OBJ)/pelota.o $(OBJ)/miniwin.o
-	g++ -o $(BIN)/$(PRJ) $(OBJ)/main.o $(OBJ)/pelota.o $(OBJ)/miniwin.o -I$(INC) -pthread -lX11
+$(BIN)/$(PRJ) : $(OBJ)/main.o $(OBJ)/pelota.o $(OBJ)/pelotas.o $(OBJ)/miniwin.o
+	g++ -o $(BIN)/$(PRJ) $(OBJ)/main.o $(OBJ)/pelota.o $(OBJ)/pelotas.o $(OBJ)/miniwin.o -I$(INC) -pthread -lX11
 
 $(OBJ)/miniwin.o : $(SRC)/miniwin.cpp  $(INC)/miniwin.h
-	g++ $(OPT) -c $(SRC)/miniwin.cpp -o $(OBJ)/miniwin.o -I$(INC) 
+	g++ $(OPT) -c $(SRC)/miniwin.cpp -o $(OBJ)/miniwin.o -I$(INC)
 
 $(OBJ)/pelota.o : $(SRC)/pelota.cpp $(INC)/pelota.h
 	g++ $(OPT) -c $(SRC)/pelota.cpp -o $(OBJ)/pelota.o -I$(INC)
 
-$(OBJ)/main.o : $(SRC)/main.cpp $(INC)/miniwin.h 
-	g++ $(OPT) -c $(SRC)/main.cpp -o $(OBJ)/main.o -I$(INC) 
+$(OBJ)/pelotas.o : $(SRC)/pelotas.cpp $(INC)/pelotas.h $(SRC)/pelota.cpp $(INC)/pelota.h
+	g++ $(OPT) -c $(SRC)/pelotas.cpp -o $(OBJ)/pelotas.o -I$(INC)
 
-clean: 
+$(OBJ)/main.o : $(SRC)/main.cpp $(INC)/miniwin.h
+	g++ $(OPT) -c $(SRC)/main.cpp -o $(OBJ)/main.o -I$(INC)
+
+clean:
 	@echo "Limpiando ... "
 	rm -rf $(OBJ)/*.o $(BIN)/*

@@ -69,7 +69,7 @@ void Pelota::mover() {
     y = radio;
   }
   dy += 10;
-  dx *= 0.97;
+//  dx *= 0.97;
 }
 
 void Pelota::pintar() {

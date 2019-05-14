@@ -9,6 +9,12 @@ Pelotas::Pelotas() {
   util = 10;
 }
 
+Pelotas::Pelotas(int capacidad) {
+  v = new Pelota[capacidad];
+  this->capacidad = capacidad;
+  util = 0;
+}
+
 Pelotas::Pelotas(Pelota *v, int util) {
   this->util = util;
   capacidad = util + 5;
@@ -18,19 +24,12 @@ Pelotas::Pelotas(Pelota *v, int util) {
   }
 }
 
-Pelotas::~Pelotas() {
-  liberar(v);
-}
-
-Pelota* Pelotas::reservar(int n) {
-  Pelota* array = nullptr;
-  array = new Pelota[n];
-  return array;
-}
-
-void Pelotas::liberar(Pelota*& array) {
-  if (array != nullptr) {
-    delete[] array;
+Pelotas::Pelotas(const Pelotas& otra) {
+  capacidad = otra.capacidad;
+  util = otra.util;
+  v = new Pelota[capacidad];
+  for (int i = 0; i < util; i++) {
+    v[i] = otra.v[i];
   }
 }
 
@@ -57,5 +56,12 @@ void Pelotas::aniadir(const Pelota& pelota) {
     capacidad += 5;
     liberar(v);
     v = nuevoV;
+  }
+}
+
+void Pelotas::mover() {
+  for (int i = 0; i < util; i++) {
+    v[i].mover();
+    v[i].pintar();
   }
 }

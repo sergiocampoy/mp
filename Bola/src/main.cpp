@@ -3,8 +3,10 @@
 
 #include "miniwin.h"
 #include "pelota.h"
+#include "pelotas.h"
 #include <iostream>
 #include <fstream>
+#include <string.h>
 using namespace miniwin;
 
 const int RADIO = 20;
@@ -60,6 +62,7 @@ int main() {
   // Inicializa la semilla para aleatorio()
   srand(time(0));
 
+  // Variables auxiliares para la lectura
   char cad[64];
   int ancho;
   int alto;
@@ -67,31 +70,40 @@ int main() {
   float x, y, dx, dy, radio;
   PColor color;
 
+  Pelotas* partida;
 
   std::ifstream fentrada;
   fentrada.open("data/pelotas.txt");
   if (fentrada) {
     fentrada >> cad;
-    if (cad == "MP-PELOTAS-T-1.0") {
+    std::cout << cad << std::endl;
+    if (strcmp(cad, "MP-PELOTAS-T-1.0") == 0) {
       fentrada >> ancho >> alto;
       fentrada >> numeroPelotas;
-      Pelotas partida(numeroPelotas);
+      partida = new Pelotas(numeroPelotas);
       for (int i = 0; i < numeroPelotas; i++) {
         fentrada >> x >> y >> dx >> dy >> radio;
         fentrada >> cad;
-        if (cad == "ROJO") {
+        std::cout << x << " " << cad << std::endl;
+        if (strcmp(cad, "ROJO") == 0) {
           color = PColor::ROJO;
-        } else {
+        } else if (strcmp(cad, "VERDE") == 0){
           color = PColor::VERDE;
+        } else {
+          std::cout << "YOU FUCKED BROOOOO" << std::endl;
         }
+        // Asignación
+        partida->aniadir(Pelota(x, y, dx, dy, radio, color));
       }
     } else {
       std::cerr << "El fichero no es adecuado" << std::endl;
+      return 1;
     }
   } else {
     std::cerr << "Error de apertura del fichero" << std::endl;
+    return 47;
   }
-  fentrada.close
+  fentrada.close();
 
 
   vredimensiona(800, 600);
@@ -99,18 +111,19 @@ int main() {
   //  Pelota b(175.0, 370.0, 16.0, 17.0, 10, PColor::ROJO);
   //   Pelota c(20.0, 40.0, 100.0, 12.0, 20, PColor::AZUL);
 
-  Pelotas v;
-
-  std::cout << a.getX() << ", " << a.getY() << std::endl;
+//  std::cout << a.getX() << ", " << a.getY() << std::endl;
 
   while (tecla() != ESCAPE) {
     borra();
+    /*
     a.mover();
     b.mover();
     c.mover();
     a.pintar();
     b.pintar();
     c.pintar();
+    */
+    partida->mover();
     refresca();
     espera(25);
   }
