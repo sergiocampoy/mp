@@ -48,7 +48,7 @@ float Pelota::distancia(const Pelota& otra)const {
 }
 
 bool Pelota::colisionado(const Pelota& otra)const {
-  return (distancia(otra) < UMBRAL);
+  return (distancia(otra) <= this->radio + otra.radio);
 }
 
 void Pelota::mover() {
