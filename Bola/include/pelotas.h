@@ -1,6 +1,8 @@
 #ifndef PELOTAS_H_
 #define PELOTAS_H_
 
+#include "pelota.h"
+
 #include <iostream>
 
 class Pelotas {
@@ -23,6 +25,8 @@ private:
   }
 public:
 // TODO operator= & copia
+
+// Constructores y destructores
 Pelotas();
 Pelotas(int capacidad);
 Pelotas(Pelota *v, int util);
@@ -30,12 +34,24 @@ Pelotas(const Pelotas& otra);
 inline ~Pelotas() {
   liberar(v);
 }
-inline int getUtil(){
-  return(util);
+
+// Métodos get
+inline int getUtil()const {
+  return util;
 }
+inline int getCapacidad()const {
+  return capacidad;
+}
+inline Pelota* getElemento(int indice)const {
+  Pelota* resultado = nullptr;
+  if (0 <= indice && indice <= util) {
+    resultado = &v[indice];
+  }
+  return resultado;
+}
+
 void borrar(int indice);
 void aniadir(const Pelota& pelota);
-void mover(int alto, int ancho);
 };
 
 

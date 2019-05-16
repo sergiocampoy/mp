@@ -1,13 +1,17 @@
+// Clase pelota
+
 #include "pelota.h"
+
 #include "definiciones.h"
 #include "miniwin.h"
-using namespace miniwin;
 
 #include <cmath>
 #include <ctime>
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
+
+using namespace miniwin;
 
 float Pelota::aleatorio(float tope) {
   return (rand() % (int)(tope) + 1);
@@ -39,7 +43,7 @@ Pelota::Pelota(float x, float y, float dx, float dy, float radio, PColor c) {
   this->radio = radio;
   this->c = c;
 }
-
+/*
 float Pelota::distancia(const Pelota& otra)const {
   float deltaX = getX() - otra.getX();
   float deltaY = getY() - otra.getY();
@@ -70,6 +74,7 @@ void Pelota::mover(int alto, int ancho) {
   }
   dy += 0.001;
 }
+*/
 /*
 void Pelota::pintar() {
   color((int) c);

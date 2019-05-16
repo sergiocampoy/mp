@@ -1,7 +1,9 @@
 // Clase pelotas
 
-#include "pelota.h"
 #include "pelotas.h"
+
+#include "pelota.h"
+#include "utilidades.h"
 
 Pelotas::Pelotas() {
   v = new Pelota[10];
@@ -56,11 +58,5 @@ void Pelotas::aniadir(const Pelota& pelota) {
     capacidad += 5;
     liberar(v);
     v = nuevoV;
-  }
-}
-
-void Pelotas::mover(int alto, int ancho) {
-  for (int i = 0; i < util; i++) {
-    v[i].mover(alto, ancho);
   }
 }

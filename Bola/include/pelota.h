@@ -49,10 +49,11 @@ public:
     return c;
   }
   // Métodos set
+  
   // Métodos
-  float distancia(const Pelota& otra)const;
-  bool colisionado(const Pelota& otra)const;
-  void mover(int alto, int ancho);
+  //float distancia(const Pelota& otra)const;
+  //bool colisionado(const Pelota& otra)const;
+  //void mover(int alto, int ancho);
   //void pintar();
 };
 

@@ -59,7 +59,7 @@ int main() {
 
   while (tecla() != ESCAPE) {
     borra();
-    pintar(partida);
+    pintar(*partida);
     refresca();
     espera(25);
   }
