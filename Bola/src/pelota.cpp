@@ -52,7 +52,7 @@ bool Pelota::colisionado(const Pelota& otra)const {
 }
 
 void Pelota::mover() {
-  const float FACTOR = 0.97;
+  const float FACTOR = 1.03;
   x += dx;
   y += dy;
   if (x > vancho() - radio) {
@@ -68,8 +68,7 @@ void Pelota::mover() {
     dy = -dy * FACTOR;
     y = radio;
   }
-  dy += 10;
-//  dx *= 0.97;
+  dy += 0.001;
 }
 
 void Pelota::pintar() {

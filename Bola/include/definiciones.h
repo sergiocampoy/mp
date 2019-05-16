@@ -1,6 +1,10 @@
 #ifndef DEFINICIONES_H_
 #define DEFINICIONES_H_
 
+// Lectura del fichero
+const char FICHERO[] = "data/pelotas.txt";
+const char PALABRA_CLAVE[] = "MP-PELOTAS-T-1.0";
+
 const float UMBRAL = 20.0; // Distancia necesaria para choque
 
 // Dimensión mínima de la pantalla

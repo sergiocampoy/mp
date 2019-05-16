@@ -4,6 +4,7 @@
 #include "miniwin.h"
 #include "pelota.h"
 #include "pelotas.h"
+#include "definiciones.h"
 #include <iostream>
 #include <fstream>
 #include <string.h>
@@ -73,24 +74,22 @@ int main() {
   Pelotas* partida;
 
   std::ifstream fentrada;
-  fentrada.open("data/pelotas.txt");
+  fentrada.open(FICHERO);
   if (fentrada) {
     fentrada >> cad;
     std::cout << cad << std::endl;
-    if (strcmp(cad, "MP-PELOTAS-T-1.0") == 0) {
+    if (strcmp(cad, PALABRA_CLAVE) == 0) {
       fentrada >> ancho >> alto;
       fentrada >> numeroPelotas;
       partida = new Pelotas(numeroPelotas);
       for (int i = 0; i < numeroPelotas; i++) {
         fentrada >> x >> y >> dx >> dy >> radio;
         fentrada >> cad;
-        std::cout << x << " " << cad << std::endl;
+        std::cout << dx << " " << cad << std::endl;
         if (strcmp(cad, "ROJO") == 0) {
           color = PColor::ROJO;
-        } else if (strcmp(cad, "VERDE") == 0){
-          color = PColor::VERDE;
         } else {
-          std::cout << "YOU FUCKED BROOOOO" << std::endl;
+          color = PColor::VERDE;
         }
         // Asignación
         partida->aniadir(Pelota(x, y, dx, dy, radio, color));
@@ -106,7 +105,7 @@ int main() {
   fentrada.close();
 
 
-  vredimensiona(800, 600);
+  vredimensiona(ancho, alto);
   //  Pelota a(50.0, 50.0, 4.0, 8.0, 15, PColor::VERDE);
   //  Pelota b(175.0, 370.0, 16.0, 17.0, 10, PColor::ROJO);
   //   Pelota c(20.0, 40.0, 100.0, 12.0, 20, PColor::AZUL);
