@@ -1,10 +1,12 @@
 #ifndef UTILIDADES_H_
-#define ULTIDADES_H_
+#define UTILIDADES_H_
 
-#include <cmath>
 #include "pelota.h"
 #include "pelotas.h"
 #include "miniwin.h"
+
+#include <cmath>
+#include <iostream>
 
 float distancia(const Pelota & una, const Pelota & otra){
   float deltaX = una.getX() - otra.getX();
@@ -43,5 +45,7 @@ void pintar(const Pelotas & pelotas) {
         circulo_lleno(pelotas[i].getX, pelotas[i].getY, pelotas[i].getRadio());
     }
 }
+
+void printPartida(float ancho, float alto, const Pelotas& partida);
 
 #endif

@@ -34,7 +34,7 @@ $(OBJ)/pelotas.o : $(SRC)/pelotas.cpp $(INC)/pelotas.h $(OBJ)/pelota.o
 	g++ $(OPT) -c $(SRC)/pelotas.cpp -o $(OBJ)/pelotas.o -I$(INC)
 
 $(OBJ)/utilidades.o : $(SRC)/utilidades.cpp $(INC)/utilidades.h $(OBJ)/pelotas.o
-	g++ $(OPT) -c $(SRC)/utilidades.cpp -o $(OBJ)/udilidades.o -I$(INC)
+	g++ $(OPT) -c $(SRC)/utilidades.cpp -o $(OBJ)/utilidades.o -I$(INC)
 
 $(OBJ)/main.o : $(SRC)/main.cpp $(INC)/miniwin.h
 	g++ $(OPT) -c $(SRC)/main.cpp -o $(OBJ)/main.o -I$(INC)

@@ -1,5 +1,8 @@
 #ifndef PELOTA_H_
 #define PELOTA_H_
+
+#include <iostream>
+
 enum class PColor {
   NEGRO,
   ROJO,
@@ -12,6 +15,7 @@ enum class PColor {
 };
 
 class Pelota {
+  friend std::ostream& operator<<(std::ostream&, const Pelota&);
 private:
   float x, y; // Posición del centro de la pelota
   float dx, dy; // Velocidad de la pelota

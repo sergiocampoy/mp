@@ -1,7 +1,12 @@
 #ifndef PELOTAS_H_
 #define PELOTAS_H_
 
+#include <iostream>
+
 class Pelotas {
+  // Sobrecarga de operadores
+  friend std::ostream& operator<<(std::ostream&, const Pelotas&);
+
 private:
   Pelota* v;
   int capacidad;
@@ -26,7 +31,7 @@ inline ~Pelotas() {
   liberar(v);
 }
 inline int getUtil(){
-    return(util);
+  return(util);
 }
 void borrar(int indice);
 void aniadir(const Pelota& pelota);
