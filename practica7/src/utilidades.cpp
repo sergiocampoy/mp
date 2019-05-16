@@ -65,7 +65,7 @@ void ordenarPunteros (const Valor * const array, const Valor **parray, int util)
         }
     }
     else{
-        parray = 0;
+        parray = nullptr;
     }
 
 }

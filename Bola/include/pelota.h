@@ -48,8 +48,8 @@ public:
   // Métodos
   float distancia(const Pelota& otra)const;
   bool colisionado(const Pelota& otra)const;
-  void mover();
-  void pintar();
+  void mover(int alto, int ancho);
+  //void pintar();
 };
 
 #endif

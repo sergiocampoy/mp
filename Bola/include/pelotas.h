@@ -25,9 +25,12 @@ Pelotas(const Pelotas& otra);
 inline ~Pelotas() {
   liberar(v);
 }
+inline int getUtil(){
+    return(util);
+}
 void borrar(int indice);
 void aniadir(const Pelota& pelota);
-void mover();
+void mover(int alto, int ancho);
 };
 
 

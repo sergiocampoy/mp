@@ -59,9 +59,8 @@ void Pelotas::aniadir(const Pelota& pelota) {
   }
 }
 
-void Pelotas::mover() {
+void Pelotas::mover(int alto, int ancho) {
   for (int i = 0; i < util; i++) {
-    v[i].mover();
-    v[i].pintar();
+    v[i].mover(alto, ancho);
   }
 }

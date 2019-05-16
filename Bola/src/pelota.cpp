@@ -51,27 +51,27 @@ bool Pelota::colisionado(const Pelota& otra)const {
   return (distancia(otra) <= this->radio + otra.radio);
 }
 
-void Pelota::mover() {
+void Pelota::mover(int alto, int ancho) {
   const float FACTOR = 1.03;
   x += dx;
   y += dy;
-  if (x > vancho() - radio) {
+  if (x > ancho - radio) {
     dx = -dx * FACTOR;
-    x = vancho() - radio;
+    x = ancho - radio;
   } else if (x < radio) {
     dx = -dx * FACTOR;
     x = radio;
-  } else if (y > valto() - radio) {
+  } else if (y > alto - radio) {
     dy = -dy * FACTOR;
-    y = valto() - radio;
+    y = alto - radio;
   } else if (y < radio) {
     dy = -dy * FACTOR;
     y = radio;
   }
   dy += 0.001;
 }
-
+/*
 void Pelota::pintar() {
   color((int) c);
   circulo_lleno(x, y, radio);
-}
+}*/

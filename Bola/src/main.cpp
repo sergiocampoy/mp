@@ -5,6 +5,7 @@
 #include "pelota.h"
 #include "pelotas.h"
 #include "definiciones.h"
+#include "utilidades.h"
 #include <iostream>
 #include <fstream>
 #include <string.h>
@@ -122,7 +123,7 @@ int main() {
     b.pintar();
     c.pintar();
     */
-    partida->mover();
+    pintar(partida);
     refresca();
     espera(25);
   }
