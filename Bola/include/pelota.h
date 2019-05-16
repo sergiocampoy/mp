@@ -49,7 +49,18 @@ public:
     return c;
   }
   // Métodos set
-  
+  inline void setX(float x){
+      this->x=x;
+  }
+  inline void setY(float y){
+      this->y=y;
+  }
+  inline void setDx(float dx){
+      this->dx=dx;
+  }
+  inline void setDy(float dy){
+      this->dy=dy;
+  }
   // Métodos
   //float distancia(const Pelota& otra)const;
   //bool colisionado(const Pelota& otra)const;

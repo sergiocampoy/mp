@@ -23,25 +23,26 @@ bool colision(const Pelota & una, const Pelota & otra){
 
 // POR HACER
 void mover(int ancho, int alto, Pelota& pelota) {
-  /*
+  
   const float FACTOR = 0.97;
-  x += dx;
-  y += dy;
-  if (x > ancho - radio) {
-    dx = -dx * FACTOR;
-    x = ancho - radio;
-  } else if (x < radio) {
-    dx = -dx * FACTOR;
-    x = radio;
-  } else if (y > alto - radio) {
-    dy = -dy * FACTOR;
-    y = alto - radio;
-  } else if (y < radio) {
-    dy = -dy * FACTOR;
-    y = radio;
+  const float RADIO = pelota.getRadio();
+  pelota.setX(pelota.getX()+pelota.getDx());
+  pelota.setY(pelota.getY()+pelota.getDy());
+  if (pelota.getX() > ancho - RADIO) {
+    pelota.setDx(-(pelota.getDx() * FACTOR)); 
+    pelota.setX(ancho - RADIO);
+  } else if (pelota.getX() < RADIO) {
+    pelota.setDx(-(pelota.getDx() * FACTOR));
+    pelota.setX(RADIO);
+  } else if (pelota.getY() > alto - RADIO) {
+    pelota.setDy(-(pelota.getDy() * FACTOR));
+    pelota.setY(alto - RADIO);
+  } else if (pelota.getY() < RADIO) {
+    pelota.setDy(-(pelota.getDy() * FACTOR));
+    pelota.setY(RADIO);
   }
-  dy += 10;
-  */
+  pelota.setDy(pelota.getDy()+0.001);
+  
 }
 
 void mover(int ancho, int alto, Pelotas& pelotas) {

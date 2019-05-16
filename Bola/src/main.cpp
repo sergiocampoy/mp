@@ -54,12 +54,16 @@ int main() {
     exit(1);
   }
   fentrada.close();
+  
+  ancho=400;
+  alto=300;
 
   vredimensiona(ancho, alto);
 
   while (tecla() != ESCAPE) {
     borra();
     pintar(*partida);
+    mover(ancho, alto, *partida);
     refresca();
     espera(25);
   }

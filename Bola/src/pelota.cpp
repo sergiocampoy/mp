@@ -3,15 +3,12 @@
 #include "pelota.h"
 
 #include "definiciones.h"
-#include "miniwin.h"
 
 #include <cmath>
 #include <ctime>
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
-
-using namespace miniwin;
 
 float Pelota::aleatorio(float tope) {
   return (rand() % (int)(tope) + 1);
