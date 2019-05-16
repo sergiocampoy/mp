@@ -7,7 +7,10 @@
 #include "miniwin.h"
 
 float distancia(const Pelota & una, const Pelota & otra){
-  return(sqrt((una.getX()-otra.getX())*(una.getX()-otra.getX())+(una.getY()-otra.getY())*(una.getY()-otra.getY())));
+  float deltaX = una.getX() - otra.getX();
+  float deltaY = una.getY() - otra.getY();
+
+  return (sqrt(deltaX*deltaX + deltaY*deltaY));
 }
 
 bool colision(const Pelota & una, const Pelota & otra){
