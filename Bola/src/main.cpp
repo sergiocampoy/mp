@@ -29,7 +29,7 @@ int main() {
 
 	// Lectura del fichero
   std::ifstream fentrada;
-  fentrada.open(FICHERO);
+  fentrada.open("data/salida.txt");
   if (fentrada) {
     fentrada >> cad;
     if (strcmp(cad, PALABRA_CLAVE) == 0) {
@@ -54,9 +54,9 @@ int main() {
     exit(1);
   }
   fentrada.close();
-  
-  ancho=400;
-  alto=300;
+
+//  ancho=400;
+//  alto=300;
 
   vredimensiona(ancho, alto);
 
@@ -67,6 +67,12 @@ int main() {
     refresca();
     espera(25);
   }
+
+  std::ofstream fsalida;
+  fsalida.open("data/salida.txt");
+  printPartida(fsalida, ancho, alto, *partida);
+  fsalida.close();
+
   vcierra();
   return 0;
 }

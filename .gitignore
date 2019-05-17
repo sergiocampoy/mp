@@ -6,7 +6,7 @@ zip
 # Archivos de salida #
 ######################
 salida?.txt
-bin/*
+bin
 lib/*.a
 obj/*.o
 doc/html/

@@ -14,6 +14,6 @@ void mover(int ancho, int alto, Pelotas& pelotas);
 
 void pintar(const Pelotas& pelotas);
 
-void printPartida(float ancho, float alto, const Pelotas& partida);
+void printPartida(std::ostream& fsalida, float ancho, float alto, const Pelotas& partida);
 
 #endif
