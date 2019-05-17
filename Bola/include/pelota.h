@@ -21,6 +21,7 @@ private:
   float dx, dy; // Velocidad de la pelota
   float radio; // Radio de la pelota
   PColor c; // Color de la pelota
+  // Métodos privados
   float aleatorio(float tope);
 public:
   // Constructores
@@ -48,6 +49,7 @@ public:
   inline PColor getColor()const {
     return c;
   }
+
   // Métodos set
   inline void setX(float x){
       this->x=x;
@@ -61,11 +63,6 @@ public:
   inline void setDy(float dy){
       this->dy=dy;
   }
-  // Métodos
-  //float distancia(const Pelota& otra)const;
-  //bool colisionado(const Pelota& otra)const;
-  //void mover(int alto, int ancho);
-  //void pintar();
 };
 
 #endif

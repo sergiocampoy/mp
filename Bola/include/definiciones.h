@@ -5,7 +5,7 @@
 const char FICHERO[] = "data/pelotas.txt";
 const char PALABRA_CLAVE[] = "MP-PELOTAS-T-1.0";
 
-const float UMBRAL = 20.0; // Distancia necesaria para choque
+const float UMBRAL = 20.0; // Tamaño minimo del radio
 
 // Dimensión mínima de la pantalla
 const float MIN_X = 400.0;

@@ -34,9 +34,14 @@ int main() {
     fentrada >> cad;
     if (strcmp(cad, PALABRA_CLAVE) == 0) {
       fentrada >> ancho >> alto >> numeroPelotas;
+      // Corrección de tamaño de pantalla
+      if (ancho < MIN_X) ancho = MIN_X;
+      if (alto < MIN_Y) alto = MIN_Y;
       partida = new Pelotas(numeroPelotas);
       for (int i = 0; i < numeroPelotas; i++) {
         fentrada >> x >> y >> dx >> dy >> radio >> cad;
+        // Corrección del radio
+        if (radio < UMBRAL) radio = UMBRAL;
         if (strcmp(cad, "ROJO") == 0) {
           color = PColor::ROJO;
         } else {
