@@ -62,18 +62,20 @@ void Pelotas::aniadir(const Pelota& pelota) {
 }
 
 const Pelotas& Pelotas::operator=(const Pelotas& otra) {
-  // Liberamos this
-  this->liberar(this->v);
+  // Comprobamos que this y otra son distintos
+  if (this != &otra) {
+    // Liberamos this
+    this->liberar(this->v);
 
-  // Copiamos datos miembro
-  this->capacidad = otra.capacidad;
-  this->util = otra.util;
-  this->v = this->reservar(capacidad);
+    // Copiamos datos miembro
+    this->capacidad = otra.capacidad;
+    this->util = otra.util;
+    this->v = this->reservar(capacidad);
 
-  // Copiamos el contenido de v
-  for (int i = 0; i < this->util; i++) {
-    this->v[i] = otra.v[i];
+    // Copiamos el contenido de v
+    for (int i = 0; i < this->util; i++) {
+      this->v[i] = otra.v[i];
+    }
   }
-
   return *this;
 }
