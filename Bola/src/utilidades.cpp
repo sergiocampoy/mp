@@ -17,19 +17,29 @@ float distancia(const Pelota & una, const Pelota & otra){
   return (sqrt(deltaX*deltaX + deltaY*deltaY));
 }
 
-bool colision(const Pelota & una, const Pelota & otra){
+bool colisionado(const Pelota & una, const Pelota & otra){
   return(distancia(una, otra) <= una.getRadio()+otra.getRadio());
 }
 
-// POR HACER
+void colisionar(Pelota& una, Pelota& otra) {
+  float dx = una.dx;
+  float dy = una.dy;
+
+  una.dx = otra.dx;
+  una.dy = otra.dy;
+
+  otra.dx = dx;
+  otra.dy = dy;
+}
+
 void mover(int ancho, int alto, Pelota& pelota) {
-  
+
   const float FACTOR = 0.97;
   const float RADIO = pelota.getRadio();
   pelota.setX(pelota.getX()+pelota.getDx());
   pelota.setY(pelota.getY()+pelota.getDy());
   if (pelota.getX() > ancho - RADIO) {
-    pelota.setDx(-(pelota.getDx() * FACTOR)); 
+    pelota.setDx(-(pelota.getDx() * FACTOR));
     pelota.setX(ancho - RADIO);
   } else if (pelota.getX() < RADIO) {
     pelota.setDx(-(pelota.getDx() * FACTOR));
@@ -41,14 +51,22 @@ void mover(int ancho, int alto, Pelota& pelota) {
     pelota.setDy(-(pelota.getDy() * FACTOR));
     pelota.setY(RADIO);
   }
-  pelota.setDy(pelota.getDy()+0.001);
-  
+
+  if (GRAVITY) {
+    pelota.setDy(pelota.getDy() + 10);
+  }
+
 }
 
 void mover(int ancho, int alto, Pelotas& pelotas) {
   for (int i = 0; i < pelotas.getUtil(); i++) {
     //v[i].mover(alto, ancho);
     mover(ancho, alto, *pelotas.getElemento(i));
+    for (int j = 0; j < pelotas.getUtil(); j++) {
+      if (i != j && colisionado(*pelotas.getElemento(i), *pelotas.getElemento(j))) {
+        colisionar(*pelotas.getElemento(i), *pelotas.getElemento(j));
+      }
+    }
   }
 }
 

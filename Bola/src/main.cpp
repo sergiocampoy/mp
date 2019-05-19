@@ -29,7 +29,11 @@ int main() {
 
 	// Lectura del fichero
   std::ifstream fentrada;
-  fentrada.open("data/salida.txt");
+  if (SAVE) {
+    fentrada.open("data/salida.txt");
+  } else {
+    fentrada.open(FICHERO);
+  }
   if (fentrada) {
     fentrada >> cad;
     if (strcmp(cad, PALABRA_CLAVE) == 0) {

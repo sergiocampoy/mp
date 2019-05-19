@@ -15,6 +15,8 @@ enum class PColor {
 };
 
 class Pelota {
+  // Funciones amigas
+  friend void colisionar(Pelota& una, Pelota& otra);
   friend std::ostream& operator<<(std::ostream&, const Pelota&);
 private:
   float x, y; // Posición del centro de la pelota

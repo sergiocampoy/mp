@@ -1,6 +1,10 @@
 #ifndef DEFINICIONES_H_
 #define DEFINICIONES_H_
 
+// TOGGLES
+const bool GRAVITY = false;
+const bool SAVE = true;
+
 // Lectura del fichero
 const char FICHERO[] = "data/pelotas.txt";
 const char PALABRA_CLAVE[] = "MP-PELOTAS-T-1.0";

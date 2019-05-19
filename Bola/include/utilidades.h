@@ -6,7 +6,7 @@
 
 float distancia(const Pelota & una, const Pelota & otra);
 
-bool colision(const Pelota & una, const Pelota & otra);
+bool colisionado(const Pelota & una, const Pelota & otra);
 
 void mover(int ancho, int alto, Pelota& pelota);
 
