@@ -82,6 +82,8 @@ int main() {
   printPartida(fsalida, ancho, alto, *partida);
   fsalida.close();
 
+  delete [] partida;
+
   vcierra();
   return 0;
 }
