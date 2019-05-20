@@ -79,3 +79,9 @@ const Pelotas& Pelotas::operator=(const Pelotas& otra) {
   }
   return *this;
 }
+
+const Pelotas& Pelotas::operator+=(const Pelota& otra) {
+    this->aniadir(otra);
+  
+    return *this;
+}

@@ -56,6 +56,8 @@ public:
 
   // Sobrecarga de operadores
   const Pelotas& operator=(const Pelotas&);
+  
+  const Pelotas& operator+=(const Pelota&);
 };
 
 

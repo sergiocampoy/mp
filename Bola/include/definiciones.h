@@ -3,7 +3,7 @@
 
 // TOGGLES
 const bool GRAVITY = false;
-const bool SAVE = true;
+const bool SAVE = false;
 
 // Lectura del fichero
 const char FICHERO[] = "data/pelotas.txt";

@@ -52,7 +52,7 @@ int main() {
           color = PColor::VERDE;
         }
         // Asignación
-        partida->aniadir(Pelota(x, y, dx, dy, radio, color));
+        *partida += Pelota(x, y, dx, dy, radio, color);
       }
     } else {
       std::cerr << "El fichero no es adecuado" << std::endl;
@@ -63,9 +63,6 @@ int main() {
     exit(1);
   }
   fentrada.close();
-
-//  ancho=400;
-//  alto=300;
 
   vredimensiona(ancho, alto);
 
@@ -82,8 +79,8 @@ int main() {
   printPartida(fsalida, ancho, alto, *partida);
   fsalida.close();
 
+  vcierra();
   delete [] partida;
 
-  vcierra();
   return 0;
 }
