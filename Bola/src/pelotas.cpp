@@ -37,7 +37,8 @@ Pelotas::Pelotas(const Pelotas& otra) {
 
 void Pelotas::borrar(int indice) {
   if (0 <= indice && indice < util) {
-    for (int i = indice; i < util-1; i++) {
+    util --;
+    for (int i = indice; i < util; i++) {
       v[i] = v[i+1];
     }
   }

@@ -1,8 +1,19 @@
 #ifndef DEFINICIONES_H_
 #define DEFINICIONES_H_
 
+enum class PColor {
+  NEGRO,
+  ROJO,
+  VERDE,
+  AZUL,
+  AMARILLO,
+  MAGENTA,
+  CYAN,
+  BLANCO
+};
+
 // TOGGLES
-const bool PHIZEOUT = true;
+const bool PHIZEOUT = false;
 const bool LOAD = false;
 
 // Lectura del fichero

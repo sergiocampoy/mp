@@ -9,7 +9,7 @@
 
 #include <iostream>
 #include <fstream>
-#include <string.h>
+#include <cstring>
 
 using namespace miniwin;
 
@@ -23,7 +23,7 @@ int main() {
   int alto;
   int numeroPelotas;
   float x, y, dx, dy, radio;
-  PColor color;
+//  PColor color;
 
   Pelotas* partida;
 
@@ -46,13 +46,9 @@ int main() {
         fentrada >> x >> y >> dx >> dy >> radio >> cad;
         // Corrección del radio
         if (radio < UMBRAL) radio = UMBRAL;
-        if (strcmp(cad, "ROJO") == 0) {
-          color = PColor::ROJO;
-        } else {
-          color = PColor::VERDE;
-        }
+        //color = cadenaToColor(cad);
         // Asignación
-        *partida += Pelota(x, y, dx, dy, radio, color);
+        *partida += Pelota(x, y, dx, dy, radio, cadenaToColor(cad));
       }
     } else {
       std::cerr << "El fichero no es adecuado" << std::endl;

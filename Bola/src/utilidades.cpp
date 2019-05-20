@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <cstring>
 
 float distancia(const Pelota & una, const Pelota & otra){
   float deltaX = una.getX() - otra.getX();
@@ -64,7 +65,8 @@ void mover(int ancho, int alto, Pelotas& pelotas) {
     //v[i].mover(alto, ancho);
     mover(ancho, alto, *pelotas.getElemento(i));
     for (int j = 0; j < pelotas.getUtil(); j++) {
-      if (i != j && colisionado(*pelotas.getElemento(i), *pelotas.getElemento(j))) {
+      if (i != j && colisionado(*pelotas.getElemento(i), *pelotas.getElemento(j))){
+        //if(pelotas.)
         colisionar(*pelotas.getElemento(i), *pelotas.getElemento(j));
       }
     }
@@ -84,24 +86,6 @@ std::ostream& operator<<(std::ostream& fsalida, const Pelota& pelota) {
   fsalida << pelota.x << " " << pelota.y << " ";
   fsalida << pelota.dx << " " << pelota.dy << " ";
   fsalida << pelota.radio << " ";
-  switch (pelota.c) {
-    case PColor::NEGRO: fsalida << "NEGRO";
-      break;
-    case PColor::VERDE: fsalida << "VERDE";
-      break;
-    case PColor::AZUL: fsalida << "AZUL";
-      break;
-    case PColor::AMARILLO: fsalida << "AMARILLO";
-      break;
-    case PColor::MAGENTA: fsalida << "MAGENTA";
-      break;
-    case PColor::CYAN: fsalida << "CYAN";
-      break;
-    case PColor::BLANCO: fsalida << "BLANCO";
-      break;
-    default: fsalida << "ROJO";
-      break;
-  }
   return fsalida;
 }
 
@@ -118,4 +102,52 @@ void printPartida(std::ostream& fsalida, float ancho, float alto, const Pelotas&
   fsalida << PALABRA_CLAVE << std::endl;
   fsalida << ancho << std::endl << alto << std::endl;
   fsalida << partida << std::endl;
+}
+
+const char* colorToCadena(const PColor& c){
+    const char* color = new char[8];
+    
+    switch (c) {
+    case PColor::NEGRO: color = "NEGRO";
+      break;
+    case PColor::VERDE: color = "VERDE";
+      break;
+    case PColor::AZUL: color = "AZUL";
+      break;
+    case PColor::AMARILLO: color = "AMARILLO";
+      break;
+    case PColor::MAGENTA: color = "MAGENTA";
+      break;
+    case PColor::CYAN: color = "CYAN";
+      break;
+    case PColor::BLANCO: color = "BLANCO";
+      break;
+    default: color = "ROJO";
+      break;
+  }
+    
+    return color;
+}
+
+const PColor cadenaToColor(const char * cad){
+    PColor c;
+    
+      if(strcmp(cad, "NEGRO") == 0)
+        c = PColor::NEGRO;
+      else if(strcmp(cad, "VERDE")  == 0)
+        c = PColor::VERDE;
+      else if(strcmp(cad, "AZUL")  == 0)
+        c = PColor::AZUL;
+      else if(strcmp(cad, "AMARILLO")  == 0)
+        c = PColor::AMARILLO;
+      else if(strcmp(cad, "MAGENTA")  == 0)
+        c = PColor::MAGENTA;
+      else if(strcmp(cad, "CYAN")  == 0)
+        c = PColor::CYAN;
+      else if(strcmp(cad, "BLANCO")  == 0)
+        c = PColor::BLANCO;
+      else
+        c = PColor::ROJO;
+      
+    return c;
 }

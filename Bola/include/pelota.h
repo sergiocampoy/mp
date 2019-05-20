@@ -2,19 +2,11 @@
 #define PELOTA_H_
 
 #include <iostream>
+#include <definiciones.h>
 
-enum class PColor {
-  NEGRO,
-  ROJO,
-  VERDE,
-  AZUL,
-  AMARILLO,
-  MAGENTA,
-  CYAN,
-  BLANCO
-};
 
 class Pelota {
+
   // Funciones amigas
   friend void colisionar(Pelota& una, Pelota& otra);
   friend std::ostream& operator<<(std::ostream&, const Pelota&);
