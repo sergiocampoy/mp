@@ -63,11 +63,16 @@ void mover(int ancho, int alto, Pelota& pelota) {
 void mover(int ancho, int alto, Pelotas& pelotas) {
   for (int i = 0; i < pelotas.getUtil(); i++) {
     //v[i].mover(alto, ancho);
-    mover(ancho, alto, *pelotas.getElemento(i));
+    mover(ancho, alto, pelotas.getElemento(i));
     for (int j = 0; j < pelotas.getUtil(); j++) {
+<<<<<<< HEAD
       if (i != j && colisionado(*pelotas.getElemento(i), *pelotas.getElemento(j))){
         //if(pelotas.)
         colisionar(*pelotas.getElemento(i), *pelotas.getElemento(j));
+=======
+      if (i != j && colisionado(pelotas.getElemento(i), pelotas.getElemento(j))) {
+        colisionar(pelotas.getElemento(i), pelotas.getElemento(j));
+>>>>>>> cdd681bca20adad5b27f325ed6a15a3b745d9ac6
       }
     }
   }
@@ -75,8 +80,8 @@ void mover(int ancho, int alto, Pelotas& pelotas) {
 
 void pintar(const Pelotas & pelotas) {
   for(int i=0; i < pelotas.getUtil(); i++){
-    miniwin::color((int) pelotas.getElemento(i)->getColor());
-    miniwin::circulo_lleno(pelotas.getElemento(i)->getX(), pelotas.getElemento(i)->getY(), pelotas.getElemento(i)->getRadio());
+    miniwin::color((int) pelotas.getElemento(i).getColor());
+    miniwin::circulo_lleno(pelotas.getElemento(i).getX(), pelotas.getElemento(i).getY(), pelotas.getElemento(i).getRadio());
     }
 }
 
@@ -103,6 +108,7 @@ void printPartida(std::ostream& fsalida, float ancho, float alto, const Pelotas&
   fsalida << ancho << std::endl << alto << std::endl;
   fsalida << partida << std::endl;
 }
+<<<<<<< HEAD
 
 const char* colorToCadena(const PColor& c){
     const char* color = new char[8];
@@ -151,3 +157,5 @@ const PColor cadenaToColor(const char * cad){
       
     return c;
 }
+=======
+>>>>>>> cdd681bca20adad5b27f325ed6a15a3b745d9ac6

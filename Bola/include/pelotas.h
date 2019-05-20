@@ -43,11 +43,8 @@ public:
   inline int getCapacidad()const {
     return capacidad;
   }
-  inline Pelota* getElemento(int indice)const {
-    Pelota* resultado = nullptr;
-    if (0 <= indice && indice <= util) {
-      resultado = &v[indice];
-    }
+  inline Pelota& getElemento(int indice)const {
+      Pelota& resultado = v[indice];
     return resultado;
   }
 
