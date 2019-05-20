@@ -80,7 +80,7 @@ int main() {
   fsalida.close();
 
   vcierra();
-  delete [] partida;
+  delete partida;
 
   return 0;
 }
