@@ -29,3 +29,7 @@ salida.md
 ###########
 *.pdf
 /practica4/build/
+
+# Practica Final #
+##################
+Bola/data/salida.txt
