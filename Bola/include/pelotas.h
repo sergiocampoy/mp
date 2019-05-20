@@ -8,6 +8,7 @@
 class Pelotas {
   // Sobrecarga de operadores
   friend std::ostream& operator<<(std::ostream&, const Pelotas&);
+  friend const std::istream& operator>>(std::istream&, Pelotas&);
 
 private:
   // Datos miembro

@@ -89,6 +89,16 @@ std::ostream& operator<<(std::ostream& fsalida, const Pelota& pelota) {
   return fsalida;
 }
 
+// operator>> de Pelota
+const std::istream& operator>>(std::istream& fentrada, Pelota& pelota) {
+  char cad[10];
+  fentrada >> pelota.x >> pelota.y;
+  fentrada >> pelota.dx >> pelota.dy;
+  fentrada >> pelota.radio >> cad;
+  pelota.c = cadenaToColor(cad);
+  return fentrada;
+}
+
 // operator<< de Pelotas
 std::ostream& operator<<(std::ostream& fsalida, const Pelotas& pelotas) {
   fsalida << pelotas.util << std::endl;
@@ -96,6 +106,25 @@ std::ostream& operator<<(std::ostream& fsalida, const Pelotas& pelotas) {
     fsalida << pelotas.v[i] << std::endl;
   }
   return fsalida;
+}
+
+// operator>> de Pelotas
+const std::istream& operator>>(std::istream& fentrada, Pelotas& pelotas) {
+  pelotas.liberar(pelotas.v);
+  pelotas.util = 0;
+  pelotas.capacidad = 0;
+
+  Pelota aux;
+  int total;
+
+  fentrada >> total;
+  pelotas.v = pelotas.reservar(total);
+  for (int i = 0; i < total; i++) {
+    fentrada >> aux;
+    pelotas.aniadir(aux);
+  }
+
+  return fentrada;
 }
 
 void printPartida(std::ostream& fsalida, float ancho, float alto, const Pelotas& partida) {

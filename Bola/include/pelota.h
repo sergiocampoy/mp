@@ -10,6 +10,7 @@ class Pelota {
   // Funciones amigas
   friend void colisionar(Pelota& una, Pelota& otra);
   friend std::ostream& operator<<(std::ostream&, const Pelota&);
+  friend const std::istream& operator>>(std::istream&, Pelota&);
 private:
   float x, y; // Posición del centro de la pelota
   float dx, dy; // Velocidad de la pelota

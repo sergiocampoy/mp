@@ -19,13 +19,9 @@ int main() {
 
   // Variables auxiliares para la lectura
   char cad[64];
-  int ancho;
-  int alto;
-  int numeroPelotas;
-  float x, y, dx, dy, radio;
-//  PColor color;
+  float ancho, alto;
 
-  Pelotas* partida;
+  Pelotas partida(1);
 
 	// Lectura del fichero
   std::ifstream fentrada;
@@ -37,19 +33,8 @@ int main() {
   if (fentrada) {
     fentrada >> cad;
     if (strcmp(cad, PALABRA_CLAVE) == 0) {
-      fentrada >> ancho >> alto >> numeroPelotas;
-      // Corrección de tamaño de pantalla
-      if (ancho < MIN_X) ancho = MIN_X;
-      if (alto < MIN_Y) alto = MIN_Y;
-      partida = new Pelotas(numeroPelotas);
-      for (int i = 0; i < numeroPelotas; i++) {
-        fentrada >> x >> y >> dx >> dy >> radio >> cad;
-        // Corrección del radio
-        if (radio < UMBRAL) radio = UMBRAL;
-        //color = cadenaToColor(cad);
-        // Asignación
-        *partida += Pelota(x, y, dx, dy, radio, cadenaToColor(cad));
-      }
+      fentrada >> ancho >> alto;
+      fentrada >> partida;
     } else {
       std::cerr << "El fichero no es adecuado" << std::endl;
       exit(1);
@@ -64,19 +49,18 @@ int main() {
 
   while (tecla() != ESCAPE) {
     borra();
-    pintar(*partida);
-    mover(ancho, alto, *partida);
+    pintar(partida);
+    mover(ancho, alto, partida);
     refresca();
     espera(25);
   }
 
   std::ofstream fsalida;
   fsalida.open("data/salida.txt");
-  printPartida(fsalida, ancho, alto, *partida);
+  printPartida(fsalida, ancho, alto, partida);
   fsalida.close();
 
   vcierra();
-  delete partida;
 
   return 0;
 }
