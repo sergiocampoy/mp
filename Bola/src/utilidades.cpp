@@ -62,10 +62,10 @@ void mover(int ancho, int alto, Pelota& pelota) {
 void mover(int ancho, int alto, Pelotas& pelotas) {
   for (int i = 0; i < pelotas.getUtil(); i++) {
     //v[i].mover(alto, ancho);
-    mover(ancho, alto, *pelotas.getElemento(i));
+    mover(ancho, alto, pelotas.getElemento(i));
     for (int j = 0; j < pelotas.getUtil(); j++) {
-      if (i != j && colisionado(*pelotas.getElemento(i), *pelotas.getElemento(j))) {
-        colisionar(*pelotas.getElemento(i), *pelotas.getElemento(j));
+      if (i != j && colisionado(pelotas.getElemento(i), pelotas.getElemento(j))) {
+        colisionar(pelotas.getElemento(i), pelotas.getElemento(j));
       }
     }
   }
@@ -73,8 +73,8 @@ void mover(int ancho, int alto, Pelotas& pelotas) {
 
 void pintar(const Pelotas & pelotas) {
   for(int i=0; i < pelotas.getUtil(); i++){
-    miniwin::color((int) pelotas.getElemento(i)->getColor());
-    miniwin::circulo_lleno(pelotas.getElemento(i)->getX(), pelotas.getElemento(i)->getY(), pelotas.getElemento(i)->getRadio());
+    miniwin::color((int) pelotas.getElemento(i).getColor());
+    miniwin::circulo_lleno(pelotas.getElemento(i).getX(), pelotas.getElemento(i).getY(), pelotas.getElemento(i).getRadio());
     }
 }
 
