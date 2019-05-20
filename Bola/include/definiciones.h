@@ -2,8 +2,8 @@
 #define DEFINICIONES_H_
 
 // TOGGLES
-const bool GRAVITY = false;
-const bool SAVE = false;
+const bool PHIZEOUT = true;
+const bool LOAD = false;
 
 // Lectura del fichero
 const char FICHERO[] = "data/pelotas.txt";

@@ -32,8 +32,8 @@ public:
   Pelotas(int capacidad);
   Pelotas(Pelota *v, int util);
   Pelotas(const Pelotas& otra);
-  inline ~Pelotas() {
-    liberar(v);
+  inline ~Pelotas(){
+    liberar(this->v);
   }
 
   // Métodos get

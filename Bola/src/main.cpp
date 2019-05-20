@@ -29,7 +29,7 @@ int main() {
 
 	// Lectura del fichero
   std::ifstream fentrada;
-  if (SAVE) {
+  if (LOAD){
     fentrada.open("data/salida.txt");
   } else {
     fentrada.open(FICHERO);
@@ -80,7 +80,7 @@ int main() {
   fsalida.close();
 
   vcierra();
-  delete [] partida;
+  delete partida;
 
   return 0;
 }

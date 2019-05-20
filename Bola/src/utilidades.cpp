@@ -52,8 +52,9 @@ void mover(int ancho, int alto, Pelota& pelota) {
     pelota.setY(RADIO);
   }
 
-  if (GRAVITY) {
+  if (PHIZEOUT) {
     pelota.setDy(pelota.getDy() + 10);
+    pelota.setDx(pelota.getDx() * 0.99);
   }
 
 }
