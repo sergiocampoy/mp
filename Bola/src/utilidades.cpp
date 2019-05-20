@@ -65,14 +65,9 @@ void mover(int ancho, int alto, Pelotas& pelotas) {
     //v[i].mover(alto, ancho);
     mover(ancho, alto, pelotas.getElemento(i));
     for (int j = 0; j < pelotas.getUtil(); j++) {
-<<<<<<< HEAD
-      if (i != j && colisionado(*pelotas.getElemento(i), *pelotas.getElemento(j))){
+      if (i != j && colisionado(pelotas.getElemento(i), pelotas.getElemento(j))){
         //if(pelotas.)
-        colisionar(*pelotas.getElemento(i), *pelotas.getElemento(j));
-=======
-      if (i != j && colisionado(pelotas.getElemento(i), pelotas.getElemento(j))) {
         colisionar(pelotas.getElemento(i), pelotas.getElemento(j));
->>>>>>> cdd681bca20adad5b27f325ed6a15a3b745d9ac6
       }
     }
   }
@@ -108,11 +103,10 @@ void printPartida(std::ostream& fsalida, float ancho, float alto, const Pelotas&
   fsalida << ancho << std::endl << alto << std::endl;
   fsalida << partida << std::endl;
 }
-<<<<<<< HEAD
 
 const char* colorToCadena(const PColor& c){
     const char* color = new char[8];
-    
+
     switch (c) {
     case PColor::NEGRO: color = "NEGRO";
       break;
@@ -131,13 +125,13 @@ const char* colorToCadena(const PColor& c){
     default: color = "ROJO";
       break;
   }
-    
+
     return color;
 }
 
 const PColor cadenaToColor(const char * cad){
     PColor c;
-    
+
       if(strcmp(cad, "NEGRO") == 0)
         c = PColor::NEGRO;
       else if(strcmp(cad, "VERDE")  == 0)
@@ -154,8 +148,6 @@ const PColor cadenaToColor(const char * cad){
         c = PColor::BLANCO;
       else
         c = PColor::ROJO;
-      
+
     return c;
 }
-=======
->>>>>>> cdd681bca20adad5b27f325ed6a15a3b745d9ac6
