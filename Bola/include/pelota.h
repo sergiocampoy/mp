@@ -6,7 +6,6 @@
 
 
 class Pelota {
-
   // Funciones amigas
   friend void colisionar(Pelota& una, Pelota& otra);
   friend std::ostream& operator<<(std::ostream&, const Pelota&);
@@ -57,6 +56,12 @@ public:
   }
   inline void setDy(float dy){
       this->dy=dy;
+  }
+
+  // Sobrecarga de operadores
+  bool operator==(const Pelota&)const;
+  inline bool operator!=(const Pelota& otra)const {
+    return !(*this == otra);
   }
 };
 

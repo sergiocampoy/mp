@@ -10,6 +10,7 @@
 #include <iostream>
 #include <cmath>
 #include <cstring>
+#include <stdexcept>
 
 float distancia(const Pelota & una, const Pelota & otra){
   float deltaX = una.getX() - otra.getX();
@@ -81,6 +82,11 @@ void pintar(const Pelotas & pelotas) {
 }
 
 // Sobrecarga de operadores
+// operator== de Pelota
+bool Pelota::operator==(const Pelota& otra)const {
+  return (radio == otra.radio && c == otra.c);
+}
+
 // operator<< de Pelota
 std::ostream& operator<<(std::ostream& fsalida, const Pelota& pelota) {
   fsalida << pelota.x << " " << pelota.y << " ";
@@ -125,6 +131,14 @@ const std::istream& operator>>(std::istream& fentrada, Pelotas& pelotas) {
   }
 
   return fentrada;
+}
+
+// operator[] de Pelotas
+Pelota& Pelotas::operator[](int indice) {
+  if (indice <= 0 || indice >= util) {
+    throw std::invalid_argument("Indice invalido en Pelotas::operator[]");
+  }
+  return v[indice];
 }
 
 void printPartida(std::ostream& fsalida, float ancho, float alto, const Pelotas& partida) {
