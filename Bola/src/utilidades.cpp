@@ -12,66 +12,113 @@
 #include <cstring>
 #include <stdexcept>
 
-float distancia(const Pelota & una, const Pelota & otra){
-  float deltaX = una.getX() - otra.getX();
-  float deltaY = una.getY() - otra.getY();
+//////// Funciones de pelota ////////////
+
+/**
+ * @brief calcula la distancia entre dos pelotas
+ * @param una Primera pelota
+ * @param otra Segunda pelota
+ * @return distancia entre los centros de las pelotas
+ */
+float distancia(const Pelota& una, const Pelota& otra) {
+  float deltaX = una.x - otra.x;
+  float deltaY = una.y - otra.y;
 
   return (sqrt(deltaX*deltaX + deltaY*deltaY));
 }
 
-bool colisionado(const Pelota & una, const Pelota & otra){
-  return(distancia(una, otra) <= una.getRadio()+otra.getRadio());
+/**
+ * @brief comprueba si dos pelotas han colisionado
+ * @param una Primera pelota
+ * @param otra Segunda pelota
+ * @return @retval true si han colisionado
+ */
+bool colisionado(const Pelota& una, const Pelota& otra) {
+  return (distancia(una, otra) <= una.radio + otra.radio);
 }
 
+/**
+ * @brief hace los cálculos del choque (intercambia la velocidad)
+ * @param una Primera pelota
+ * @param otra Segunda pelota
+ */
 void colisionar(Pelota& una, Pelota& otra) {
   float dx = una.dx;
-  float dy = una.dy;
-  //float factor = 0.8 + rand() % 400 / 1000;
-  
-  //if(!PHIZEOUT){
   una.dx = otra.dx;
-  una.dy = otra.dy;
-
   otra.dx = dx;
+
+  float dy = una.dy;
+  una.dy = otra.dy;
   otra.dy = dy;
-  //}
-  /*else{
-        una.dx = otra.dx*factor;
-        una.dy = otra.dy*factor;
-
-        otra.dx = dx*factor;
-        otra.dy = dy*factor;
-  }*/
 }
 
+/**
+ * @brief Mueve la pelota y comprueba si choca con la pared
+ * @param ancho Ancho de la pantalla
+ * @param alto Alto de la pantalla
+ * @param pelota
+ */
 void mover(int ancho, int alto, Pelota& pelota) {
+  pelota.x += pelota.dx;
+  pelota.y += pelota.dy;
 
-  const float FACTOR = 0.97;
-  const float RADIO = pelota.getRadio();
-  pelota.setX(pelota.getX()+pelota.getDx());
-  pelota.setY(pelota.getY()+pelota.getDy());
-  if (pelota.getX() > ancho - RADIO) {
-    pelota.setDx(-(pelota.getDx() * FACTOR));
-    pelota.setX(ancho - RADIO);
-  } else if (pelota.getX() < RADIO) {
-    pelota.setDx(-(pelota.getDx() * FACTOR));
-    pelota.setX(RADIO);
-  } else if (pelota.getY() > alto - RADIO) {
-    pelota.setDy(-(pelota.getDy() * FACTOR));
-    pelota.setY(alto - RADIO);
-  } else if (pelota.getY() < RADIO) {
-    pelota.setDy(-(pelota.getDy() * FACTOR));
-    pelota.setY(RADIO);
+  if (pelota.x > ancho - pelota.radio) {
+    pelota.dx = -pelota.dx * FACTOR;
+    pelota.x = ancho - pelota.radio;
+  } else if (pelota.x < pelota.radio) {
+    pelota.dx = -pelota.dx * FACTOR;
+    pelota.x = pelota.radio;
   }
 
-  if (PHIZEOUT) {
-    pelota.setDy(pelota.getDy() + pelota.getY()/100);
-    //pelota.setDy(pelota.getDy() + 10);
-    pelota.setDx(pelota.getDx() * 0.99);
+  if (pelota.y > alto - pelota.radio) {
+    pelota.dy = -pelota.dy * FACTOR;
+    pelota.y = alto - pelota.radio;
+  } else if (pelota.y < pelota.radio) {
+    pelota.dy = -pelota.dy * FACTOR;
+    pelota.y = pelota.radio;
   }
 
+  if (FISICAS) {
+    pelota.dy += pelota.y/100; // Gravedad
+    pelota.dx *= 0.99; // Rozamiento
+    //pelota.dy += 10;
+  }
 }
 
+// Sobrecarga de operadores
+
+// operator<< de Pelota
+std::ostream& operator<<(std::ostream& fsalida, const Pelota& pelota) {
+  fsalida << pelota.x << " " << pelota.y << " ";
+  fsalida << pelota.dx << " " << pelota.dy << " ";
+  fsalida << pelota.radio << " ";
+  return fsalida;
+}
+
+// operator>> de Pelota
+const std::istream& operator>>(std::istream& fentrada, Pelota& pelota) {
+  char cad[10];
+  fentrada >> pelota.x >> pelota.y;
+  fentrada >> pelota.dx >> pelota.dy;
+  fentrada >> pelota.radio >> cad;
+  pelota.c = cadenaToColor(cad);
+  return fentrada;
+}
+
+// operator== de Pelota
+bool Pelota::operator==(const Pelota& otra)const {
+  return (radio == otra.radio && c == otra.c);
+}
+
+
+//////// Funciones de pelota ////////////
+
+/**
+ * @brief Mueve la pelota y comprueba si choca con la pared
+ * @param ancho Ancho de la pantalla
+ * @param alto Alto de la pantalla
+ * @param pelota
+ */
 void mover(int ancho, int alto, Pelotas& pelotas) {
   for (int i = 0; i < pelotas.getUtil(); i++) {
     //v[i].mover(alto, ancho);
@@ -92,29 +139,7 @@ void pintar(const Pelotas & pelotas) {
     }
 }
 
-// Sobrecarga de operadores
-// operator== de Pelota
-bool Pelota::operator==(const Pelota& otra)const {
-  return (radio == otra.radio && c == otra.c);
-}
 
-// operator<< de Pelota
-std::ostream& operator<<(std::ostream& fsalida, const Pelota& pelota) {
-  fsalida << pelota.x << " " << pelota.y << " ";
-  fsalida << pelota.dx << " " << pelota.dy << " ";
-  fsalida << pelota.radio << " ";
-  return fsalida;
-}
-
-// operator>> de Pelota
-const std::istream& operator>>(std::istream& fentrada, Pelota& pelota) {
-  char cad[10];
-  fentrada >> pelota.x >> pelota.y;
-  fentrada >> pelota.dx >> pelota.dy;
-  fentrada >> pelota.radio >> cad;
-  pelota.c = cadenaToColor(cad);
-  return fentrada;
-}
 
 // operator<< de Pelotas
 std::ostream& operator<<(std::ostream& fsalida, const Pelotas& pelotas) {

@@ -13,8 +13,11 @@ enum class PColor {
 };
 
 // TOGGLES
-const bool PHIZEOUT = false;
+const bool FISICAS = false;
 const bool LOAD = false;
+
+// Físicas
+const float FACTOR = 0.97; // Rebote
 
 // Lectura del fichero
 const char FICHERO[] = "data/pelotas.txt";

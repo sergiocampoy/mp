@@ -1,13 +1,18 @@
 #ifndef PELOTA_H_
 #define PELOTA_H_
 
-#include <iostream>
-#include <definiciones.h>
+#include "definiciones.h"
 
+#include <iostream>
 
 class Pelota {
   // Funciones amigas
-  friend void colisionar(Pelota& una, Pelota& otra);
+  friend float distancia(const Pelota&, const Pelota&);
+  friend bool colisionado(const Pelota&, const Pelota&);
+  friend void colisionar(Pelota&, Pelota&);
+  friend void mover(int, int, Pelota&);
+  
+  // Sobrecarga entrada/salida
   friend std::ostream& operator<<(std::ostream&, const Pelota&);
   friend const std::istream& operator>>(std::istream&, Pelota&);
 private:
@@ -20,9 +25,8 @@ private:
 public:
   // Constructores
   Pelota();
-  Pelota(float x, float y);
   Pelota(float x, float y, float dx = 1.0, float dy = 1.0,
-         float radio = 10, PColor c = PColor::ROJO);
+         float radio = 30, PColor c = PColor::ROJO);
 
   // Métodos get
   inline float getX()const {

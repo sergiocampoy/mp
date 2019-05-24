@@ -5,11 +5,11 @@
 #include "pelotas.h"
 #include "definiciones.h"
 
-float distancia(const Pelota & una, const Pelota & otra);
+//float distancia(const Pelota & una, const Pelota & otra);
 
-bool colisionado(const Pelota & una, const Pelota & otra);
+//bool colisionado(const Pelota & una, const Pelota & otra);
 
-void mover(int ancho, int alto, Pelota& pelota);
+//void mover(int ancho, int alto, Pelota& pelota);
 
 void mover(int ancho, int alto, Pelotas& pelotas);
 
