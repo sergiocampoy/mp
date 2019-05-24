@@ -26,12 +26,22 @@ bool colisionado(const Pelota & una, const Pelota & otra){
 void colisionar(Pelota& una, Pelota& otra) {
   float dx = una.dx;
   float dy = una.dy;
-
+  //float factor = 0.8 + rand() % 400 / 1000;
+  
+  //if(!PHIZEOUT){
   una.dx = otra.dx;
   una.dy = otra.dy;
 
   otra.dx = dx;
   otra.dy = dy;
+  //}
+  /*else{
+        una.dx = otra.dx*factor;
+        una.dy = otra.dy*factor;
+
+        otra.dx = dx*factor;
+        otra.dy = dy*factor;
+  }*/
 }
 
 void mover(int ancho, int alto, Pelota& pelota) {
@@ -55,7 +65,8 @@ void mover(int ancho, int alto, Pelota& pelota) {
   }
 
   if (PHIZEOUT) {
-    pelota.setDy(pelota.getDy() + 10);
+    pelota.setDy(pelota.getDy() + pelota.getY()/100);
+    //pelota.setDy(pelota.getDy() + 10);
     pelota.setDx(pelota.getDx() * 0.99);
   }
 
