@@ -6,6 +6,9 @@
 #include <iostream>
 
 class Pelotas {
+  // Funciones amigas
+  friend void mover(int, int, Pelotas&);
+  friend void pintar(const Pelotas&);
   // Sobrecarga de operadores
   friend std::ostream& operator<<(std::ostream&, const Pelotas&);
   friend const std::istream& operator>>(std::istream&, Pelotas&);
@@ -29,9 +32,9 @@ private:
 public:
   // Constructores y destructores
   Pelotas();
-  Pelotas(int capacidad);
-  Pelotas(Pelota *v, int util);
-  Pelotas(const Pelotas& otra);
+  Pelotas(int);
+  Pelotas(Pelota*, int);
+  Pelotas(const Pelotas&);
   inline ~Pelotas(){
     liberar(this->v);
   }
@@ -55,6 +58,7 @@ public:
   const Pelotas& operator=(const Pelotas&);
   const Pelotas& operator+=(const Pelota&);
   Pelota& operator[](int);
+  Pelota operator[](int)const;
 };
 
 

@@ -11,7 +11,8 @@ class Pelota {
   friend bool colisionado(const Pelota&, const Pelota&);
   friend void colisionar(Pelota&, Pelota&);
   friend void mover(int, int, Pelota&);
-  
+  friend void pintar(const Pelota&);
+
   // Sobrecarga entrada/salida
   friend std::ostream& operator<<(std::ostream&, const Pelota&);
   friend const std::istream& operator>>(std::istream&, Pelota&);

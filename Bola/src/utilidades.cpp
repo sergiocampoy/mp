@@ -12,6 +12,8 @@
 #include <cstring>
 #include <stdexcept>
 
+using namespace miniwin;
+
 //////// Funciones de pelota ////////////
 
 /**
@@ -79,103 +81,47 @@ void mover(int ancho, int alto, Pelota& pelota) {
   }
 
   if (FISICAS) {
-    pelota.dy += pelota.y/100; // Gravedad
+    //pelota.dy += 10; // Gravedad
+    pelota.dy += pelota.y/100; // Gravedad Oscar
     pelota.dx *= 0.99; // Rozamiento
-    //pelota.dy += 10;
   }
 }
 
-// Sobrecarga de operadores
-
-// operator<< de Pelota
-std::ostream& operator<<(std::ostream& fsalida, const Pelota& pelota) {
-  fsalida << pelota.x << " " << pelota.y << " ";
-  fsalida << pelota.dx << " " << pelota.dy << " ";
-  fsalida << pelota.radio << " ";
-  return fsalida;
+void pintar(const Pelota& pelota) {
+  color((int) pelota.c);
+  circulo_lleno(pelota.x, pelota.y, pelota.radio);
 }
 
-// operator>> de Pelota
-const std::istream& operator>>(std::istream& fentrada, Pelota& pelota) {
-  char cad[10];
-  fentrada >> pelota.x >> pelota.y;
-  fentrada >> pelota.dx >> pelota.dy;
-  fentrada >> pelota.radio >> cad;
-  pelota.c = cadenaToColor(cad);
-  return fentrada;
-}
-
-// operator== de Pelota
-bool Pelota::operator==(const Pelota& otra)const {
-  return (radio == otra.radio && c == otra.c);
-}
-
-
-//////// Funciones de pelota ////////////
+//////// Funciones de pelotas ////////////
 
 /**
- * @brief Mueve la pelota y comprueba si choca con la pared
+ * @brief Mueve todas las pelotas y las hace colisionar entre si
  * @param ancho Ancho de la pantalla
  * @param alto Alto de la pantalla
- * @param pelota
+ * @param pelotas
  */
 void mover(int ancho, int alto, Pelotas& pelotas) {
-  for (int i = 0; i < pelotas.getUtil(); i++) {
-    //v[i].mover(alto, ancho);
-    mover(ancho, alto, pelotas.getElemento(i));
-    for (int j = 0; j < pelotas.getUtil(); j++) {
-      if (i != j && colisionado(pelotas.getElemento(i), pelotas.getElemento(j))){
-        //if(pelotas.)
-        colisionar(pelotas.getElemento(i), pelotas.getElemento(j));
+  for (int i = 0; i < pelotas.util; i++) {
+    mover(ancho, alto, pelotas[i]);
+    for (int j = 0; j < pelotas.util; j++) {
+      if (i != j && colisionado(pelotas[i], pelotas[j])) {
+        colisionar(pelotas[i], pelotas[j]);
       }
     }
   }
 }
 
-void pintar(const Pelotas & pelotas) {
-  for(int i=0; i < pelotas.getUtil(); i++){
-    miniwin::color((int) pelotas.getElemento(i).getColor());
-    miniwin::circulo_lleno(pelotas.getElemento(i).getX(), pelotas.getElemento(i).getY(), pelotas.getElemento(i).getRadio());
-    }
-}
-
-
-
-// operator<< de Pelotas
-std::ostream& operator<<(std::ostream& fsalida, const Pelotas& pelotas) {
-  fsalida << pelotas.util << std::endl;
-  for (int i = 0; i < pelotas.util; i++) {
-    fsalida << pelotas.v[i] << std::endl;
+/**
+ * @brief Pinta todas las pelotas
+ * @param pelotas
+ */
+void pintar(const Pelotas& pelotas) {
+  for(int i=0; i < pelotas.util; i++){
+    pintar(pelotas[i]);
   }
-  return fsalida;
 }
 
-// operator>> de Pelotas
-const std::istream& operator>>(std::istream& fentrada, Pelotas& pelotas) {
-  pelotas.liberar(pelotas.v);
-  pelotas.util = 0;
-  pelotas.capacidad = 0;
-
-  Pelota aux;
-  int total;
-
-  fentrada >> total;
-  pelotas.v = pelotas.reservar(total);
-  for (int i = 0; i < total; i++) {
-    fentrada >> aux;
-    pelotas.aniadir(aux);
-  }
-
-  return fentrada;
-}
-
-// operator[] de Pelotas
-Pelota& Pelotas::operator[](int indice) {
-  if (indice <= 0 || indice >= util) {
-    throw std::invalid_argument("Indice invalido en Pelotas::operator[]");
-  }
-  return v[indice];
-}
+////// Funciones auxiliares /////////
 
 void printPartida(std::ostream& fsalida, float ancho, float alto, const Pelotas& partida) {
   fsalida << PALABRA_CLAVE << std::endl;
@@ -183,50 +129,58 @@ void printPartida(std::ostream& fsalida, float ancho, float alto, const Pelotas&
   fsalida << partida << std::endl;
 }
 
+/**
+ * @brief convierte de PColor a char[]
+ * @param c
+ */
 const char* colorToCadena(const PColor& c){
-    const char* color = new char[8];
+  const char* color = new char[8];
 
-    switch (c) {
-    case PColor::NEGRO: color = "NEGRO";
-      break;
-    case PColor::VERDE: color = "VERDE";
-      break;
-    case PColor::AZUL: color = "AZUL";
-      break;
-    case PColor::AMARILLO: color = "AMARILLO";
-      break;
-    case PColor::MAGENTA: color = "MAGENTA";
-      break;
-    case PColor::CYAN: color = "CYAN";
-      break;
-    case PColor::BLANCO: color = "BLANCO";
-      break;
-    default: color = "ROJO";
-      break;
+  switch (c) {
+  case PColor::NEGRO: color = "NEGRO";
+    break;
+  case PColor::VERDE: color = "VERDE";
+    break;
+  case PColor::AZUL: color = "AZUL";
+    break;
+  case PColor::AMARILLO: color = "AMARILLO";
+    break;
+  case PColor::MAGENTA: color = "MAGENTA";
+    break;
+  case PColor::CYAN: color = "CYAN";
+    break;
+  case PColor::BLANCO: color = "BLANCO";
+    break;
+  default: color = "ROJO";
+    break;
   }
 
-    return color;
+  return color;
 }
 
-const PColor cadenaToColor(const char * cad){
-    PColor c;
+/**
+ * @brief convierte de char[] a PColor
+ * @param cad
+ */
+const PColor cadenaToColor(const char* cad){
+  PColor c;
 
-      if(strcmp(cad, "NEGRO") == 0)
-        c = PColor::NEGRO;
-      else if(strcmp(cad, "VERDE")  == 0)
-        c = PColor::VERDE;
-      else if(strcmp(cad, "AZUL")  == 0)
-        c = PColor::AZUL;
-      else if(strcmp(cad, "AMARILLO")  == 0)
-        c = PColor::AMARILLO;
-      else if(strcmp(cad, "MAGENTA")  == 0)
-        c = PColor::MAGENTA;
-      else if(strcmp(cad, "CYAN")  == 0)
-        c = PColor::CYAN;
-      else if(strcmp(cad, "BLANCO")  == 0)
-        c = PColor::BLANCO;
-      else
-        c = PColor::ROJO;
+  if (strcmp(cad, "NEGRO") == 0)
+    c = PColor::NEGRO;
+  else if (strcmp(cad, "VERDE") == 0)
+    c = PColor::VERDE;
+  else if (strcmp(cad, "AZUL") == 0)
+    c = PColor::AZUL;
+  else if (strcmp(cad, "AMARILLO") == 0)
+    c = PColor::AMARILLO;
+  else if (strcmp(cad, "MAGENTA") == 0)
+    c = PColor::MAGENTA;
+  else if (strcmp(cad, "CYAN") == 0)
+    c = PColor::CYAN;
+  else if (strcmp(cad, "BLANCO") == 0)
+    c = PColor::BLANCO;
+  else
+    c = PColor::ROJO;
 
-    return c;
+  return c;
 }

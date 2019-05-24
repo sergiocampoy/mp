@@ -3,6 +3,7 @@
 #include "pelota.h"
 
 #include "definiciones.h"
+#include "utilidades.h"
 
 #include <cmath>
 #include <ctime>
@@ -11,16 +12,16 @@
 #include <iostream>
 
 float Pelota::aleatorio(float tope) {
-  return (rand() % (int)(tope) + 1);
+  return (rand() % (int)(tope));
 }
 
 Pelota::Pelota() {
   x = aleatorio(MIN_X);
   y = aleatorio(MIN_Y);
-  dx = aleatorio(100);
-  dy = aleatorio(100);
-  radio = UMBRAL/2;
-  c = PColor::ROJO;
+  dx = aleatorio(MAX_VEL);
+  dy = aleatorio(MAX_VEL);
+  radio = 30;
+  c = PColor::VERDE;
 }
 
 Pelota::Pelota(float x, float y, float dx, float dy, float radio, PColor c) {
@@ -30,4 +31,29 @@ Pelota::Pelota(float x, float y, float dx, float dy, float radio, PColor c) {
   this->dy = dy;
   this->radio = radio;
   this->c = c;
+}
+
+// Sobrecarga de operadores
+
+// operator<< de Pelota
+std::ostream& operator<<(std::ostream& fsalida, const Pelota& pelota) {
+  fsalida << pelota.x << " " << pelota.y << " ";
+  fsalida << pelota.dx << " " << pelota.dy << " ";
+  fsalida << pelota.radio << " ";
+  return fsalida;
+}
+
+// operator>> de Pelota
+const std::istream& operator>>(std::istream& fentrada, Pelota& pelota) {
+  char cad[10];
+  fentrada >> pelota.x >> pelota.y;
+  fentrada >> pelota.dx >> pelota.dy;
+  fentrada >> pelota.radio >> cad;
+  pelota.c = cadenaToColor(cad);
+  return fentrada;
+}
+
+// operator== de Pelota
+bool Pelota::operator==(const Pelota& otra)const {
+  return (radio == otra.radio && c == otra.c);
 }

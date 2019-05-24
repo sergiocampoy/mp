@@ -44,7 +44,6 @@ int main() {
     exit(1);
   }
   fentrada.close();
-
   vredimensiona(ancho, alto);
 
   while (tecla() != ESCAPE) {
