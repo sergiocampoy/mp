@@ -101,11 +101,40 @@ void pintar(const Pelota& pelota) {
  * @param pelotas
  */
 void mover(int ancho, int alto, Pelotas& pelotas) {
+  bool choque = false;
   for (int i = 0; i < pelotas.util; i++) {
     mover(ancho, alto, pelotas[i]);
-    for (int j = 0; j < pelotas.util; j++) {
+    for (int j = 0; j < pelotas.util && !choque; j++) {
+
       if (i != j && colisionado(pelotas[i], pelotas[j])) {
-        colisionar(pelotas[i], pelotas[j]);
+        if (pelotas[i] != pelotas[j]) {
+          choque = true; // un poco ortopédico, pero funciona
+
+          if (pelotas[i].getColor() == PColor::VERDE) {
+            pelotas.borrar(i);
+          } else {
+            pelotas.borrar(j);
+          }
+
+        } else {
+          if (pelotas[i].getColor() == PColor::VERDE && pelotas.util < 10) {
+            Pelota aux;
+            bool choca;
+            do {
+              choca = false;
+              aux = Pelota();
+              for (int i = 0; i < pelotas.util; i++) {
+                if (colisionado(aux, pelotas[i])) {
+                  choca = true;
+                }
+              }
+            } while (choca);
+
+            //pelotas += aux;
+            pelotas.aniadir(aux);
+          }
+          colisionar(pelotas[i], pelotas[j]);
+        }
       }
     }
   }

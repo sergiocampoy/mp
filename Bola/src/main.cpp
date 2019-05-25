@@ -5,6 +5,7 @@
 #include "miniwin.h"
 #include "pelota.h"
 #include "pelotas.h"
+#include "simulador.h"
 #include "utilidades.h"
 
 #include <iostream>
@@ -13,6 +14,19 @@
 
 using namespace miniwin;
 
+int main() {
+  srand(time(0));
+  Simulador partida("data/pelotas.txt");
+  while (tecla() != ESCAPE) {
+    partida.step(1);
+    pintar(partida, 25);
+  }
+  partida.salvar("data/salida.txt");
+  vcierra();
+  //delete partida;
+  return 0;
+}
+/*
 int main() {
   // Inicializa la semilla para aleatorio()
   srand(time(0));
@@ -63,3 +77,4 @@ int main() {
 
   return 0;
 }
+*/

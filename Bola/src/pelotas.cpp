@@ -5,6 +5,8 @@
 #include "pelota.h"
 #include "utilidades.h"
 
+#include "miniwin.h"
+
 Pelotas::Pelotas() {
   v = new Pelota[10];
   capacidad = 10;
@@ -133,6 +135,9 @@ const Pelotas& Pelotas::operator+=(const Pelota& pelota) {
 Pelota& Pelotas::operator[](int indice) {
   if (indice < 0 || indice >= util) {
     throw std::invalid_argument("Indice invalido en Pelotas::operator[]");
+    std::cout << indice << " " << v[indice] << std::endl;
+    std::cout << util << " " << capacidad << std::endl;
+    //miniwin::espera(10000);
   }
   return v[indice];
 }
