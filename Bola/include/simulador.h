@@ -21,9 +21,15 @@ public:
   inline int getAlto()const {
     return alto;
   }
+  inline Pelotas getActual() const {
+      return actual;
+  }
+  inline Pelotas getOriginal() const{
+      return original;
+  }
   void step(int);
   //void pintar(int)const;
-  void salvar(const char*)const;
+  bool salvar(const char*)const;
 };
 
 //void pintar(const Simulador&, int);

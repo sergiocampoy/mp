@@ -31,4 +31,7 @@ const float MIN_Y = 300.0;
 
 const float MAX_VEL = 10.0; // Velocidad terminal
 
+//Cantidad máxima de pelotas en la pantalla
+const int MAX_PEL = 10;
+
 #endif

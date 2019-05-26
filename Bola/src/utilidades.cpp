@@ -110,6 +110,7 @@ void mover(int ancho, int alto, Pelotas& pelotas) {
         if (pelotas[i] != pelotas[j]) {
           choque = true; // un poco ortopédico, pero funciona
 
+          //Cuando son una es verde y otra es roja
           if (pelotas[i].getColor() == PColor::VERDE) {
             pelotas.borrar(i);
           } else {
@@ -117,7 +118,8 @@ void mover(int ancho, int alto, Pelotas& pelotas) {
           }
 
         } else {
-          if (pelotas[i].getColor() == PColor::VERDE && pelotas.util < 10) {
+          //Cuando son verdes
+          if (pelotas[i].getColor() == PColor::VERDE && pelotas.util < MAX_PEL) {
             Pelota aux;
             bool choca;
             do {
@@ -130,8 +132,7 @@ void mover(int ancho, int alto, Pelotas& pelotas) {
               }
             } while (choca);
 
-            //pelotas += aux;
-            pelotas.aniadir(aux);
+            pelotas += aux;
           }
           colisionar(pelotas[i], pelotas[j]);
         }

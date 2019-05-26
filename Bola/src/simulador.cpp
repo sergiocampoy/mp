@@ -61,7 +61,8 @@ void pintar(const Simulador& sim, int tiempo) {
  * @brief guarda los datos de la partida en un fichero
  * @param fichero en el que se guarda la partida
  */
-void Simulador::salvar(const char* fichero)const {
+bool Simulador::salvar(const char* fichero)const {
+  bool flag = false;
   std::ofstream fsalida;
   fsalida.open(fichero);
   if (fichero) {
@@ -71,8 +72,10 @@ void Simulador::salvar(const char* fichero)const {
     for (int i = 0; i < actual.getUtil(); i++) {
       fsalida << actual[i] << std::endl;
     }
-  } else {
+    flag = true;
+  } /*else {
     std::cerr << "Error en la apertura del fichero" << std::endl;
     exit(1);
-  }
+  }*/
+  return flag;
 }

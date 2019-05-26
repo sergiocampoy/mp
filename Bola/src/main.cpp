@@ -21,11 +21,28 @@ int main() {
     partida.step(1);
     pintar(partida, 25);
   }
-  partida.salvar("data/salida.txt");
-  vcierra();
+  bool ok = partida.salvar("data/salida.txt");
+  if (!ok)
+      std::cerr << "Error de escritura";
+  
+  Pelotas local = partida.getActual();
+  std::cout << "Estado final: \n";
+  std::cout << local << std::endl;
+  Pelota p1 = partida.getOriginal()[0];
+  Pelota p2 = partida.getActual()[0];
+    std::cout << p1 << "\n" << p2 << "\nson ";
+  if (p1==p2)
+      std::cout << "Iguales \n";
+  else
+      std::cout << "Diferentes \n";
+  
+  
+  //vcierra();
   //delete partida;
   return 0;
 }
+
+//Version antigua
 /*
 int main() {
   // Inicializa la semilla para aleatorio()
