@@ -21,7 +21,7 @@ int main() {
     partida.step(1);
     pintar(partida, 25);
   }
-  bool ok = partida.salvar("data/salida.txt");
+  bool ok = partida.salvar("./data/salida.txt");
   if (!ok)
       std::cerr << "Error de escritura";
   

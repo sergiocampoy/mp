@@ -39,7 +39,7 @@ Pelota::Pelota(float x, float y, float dx, float dy, float radio, PColor c) {
 std::ostream& operator<<(std::ostream& fsalida, const Pelota& pelota) {
   fsalida << pelota.x << " " << pelota.y << " ";
   fsalida << pelota.dx << " " << pelota.dy << " ";
-  fsalida << pelota.radio << " ";
+  fsalida << pelota.radio << " " << colorToCadena(pelota.c);
   return fsalida;
 }
 
