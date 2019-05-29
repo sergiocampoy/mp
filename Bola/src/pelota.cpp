@@ -5,8 +5,6 @@
 #include "definiciones.h"
 #include "utilidades.h"
 
-#include <cmath>
-#include <ctime>
 #include <cstdlib>
 #include <fstream>
 #include <iostream>

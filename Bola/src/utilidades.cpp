@@ -44,14 +44,19 @@ bool colisionado(const Pelota& una, const Pelota& otra) {
  * @param una Primera pelota
  * @param otra Segunda pelota
  */
-void colisionar(Pelota& una, Pelota& otra) {
-  float dx = una.dx;
-  una.dx = otra.dx;
-  otra.dx = dx;
+void colisionar(int ancho, int alto, Pelota& una, Pelota& otra) {
+  float dx = una.getDx();
+  una.setDx(otra.getDx());
+  otra.setDx(dx);
 
-  float dy = una.dy;
-  una.dy = otra.dy;
-  otra.dy = dy;
+  float dy = una.getDy();
+  una.setDy(otra.getDy());
+  otra.setDy(dy);
+  
+  while(colisionado(una, otra)){
+    mover(ancho, alto, una);
+    mover(ancho, alto, otra);
+  }
 }
 
 /**
@@ -134,7 +139,7 @@ void mover(int ancho, int alto, Pelotas& pelotas) {
 
             pelotas += aux;
           }
-          colisionar(pelotas[i], pelotas[j]);
+          colisionar(ancho, alto, pelotas[i], pelotas[j]);
         }
       }
     }

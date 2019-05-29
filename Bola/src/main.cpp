@@ -35,6 +35,12 @@ int main() {
       std::cout << "Iguales \n";
   else
       std::cout << "Diferentes \n";
+    
+  std::ofstream finale;
+  finale.open("data/finale.txt");
+  finale << "Original: \n" << partida.getOriginal() << std::endl << std::endl;
+  finale << "Actual: \n" <<partida.getActual() << std::endl;
+  finale.close();
   
   
   //vcierra();

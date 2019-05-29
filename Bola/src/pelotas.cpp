@@ -5,8 +5,6 @@
 #include "pelota.h"
 #include "utilidades.h"
 
-#include "miniwin.h"
-
 Pelotas::Pelotas() {
   v = new Pelota[10];
   capacidad = 10;
