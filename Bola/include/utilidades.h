@@ -7,8 +7,8 @@
 
 void printPartida(std::ostream& fsalida, float ancho, float alto, const Pelotas& partida);
 
-const char* colorToCadena(const PColor& c);
+const std::string colorToString(const PColor& c);
 
-const PColor cadenaToColor(const char * cad);
+const PColor stringToColor(std::string & cad);
 
 #endif

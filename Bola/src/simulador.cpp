@@ -14,7 +14,7 @@ Simulador::Simulador(const char* fichero) {
   char cad[20];
   std::ifstream fentrada;
   fentrada.open(fichero);
-  if (fentrada) {
+  if (fentrada.is_open()) {
     fentrada >> cad;
     if (strcmp(cad, PALABRA_CLAVE) == 0) {
       fentrada >> ancho >> alto;

@@ -37,17 +37,17 @@ Pelota::Pelota(float x, float y, float dx, float dy, float radio, PColor c) {
 std::ostream& operator<<(std::ostream& fsalida, const Pelota& pelota) {
   fsalida << pelota.x << " " << pelota.y << " ";
   fsalida << pelota.dx << " " << pelota.dy << " ";
-  fsalida << pelota.radio << " " << colorToCadena(pelota.c);
+  fsalida << pelota.radio << " " << colorToString(pelota.c);
   return fsalida;
 }
 
 // operator>> de Pelota
 const std::istream& operator>>(std::istream& fentrada, Pelota& pelota) {
-  char cad[10];
+  std::string cad;
   fentrada >> pelota.x >> pelota.y;
   fentrada >> pelota.dx >> pelota.dy;
   fentrada >> pelota.radio >> cad;
-  pelota.c = cadenaToColor(cad);
+  pelota.c = stringToColor(cad);
   return fentrada;
 }
 

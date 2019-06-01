@@ -9,8 +9,8 @@
 
 #include <iostream>
 #include <cmath>
-#include <cstring>
 #include <stdexcept>
+#include <string>
 
 using namespace miniwin;
 
@@ -168,8 +168,8 @@ void printPartida(std::ostream& fsalida, float ancho, float alto, const Pelotas&
  * @brief convierte de PColor a char[]
  * @param c
  */
-const char* colorToCadena(const PColor& c){
-  const char* color = new char[8];
+const std::string colorToString(const PColor& c){
+  std::string color;
 
   switch (c) {
   case PColor::NEGRO: color = "NEGRO";
@@ -197,22 +197,22 @@ const char* colorToCadena(const PColor& c){
  * @brief convierte de char[] a PColor
  * @param cad
  */
-const PColor cadenaToColor(const char* cad){
+const PColor stringToColor(std::string & str){
   PColor c;
-
-  if (strcmp(cad, "NEGRO") == 0)
+  
+  if (str.compare("NEGRO") == 0 )
     c = PColor::NEGRO;
-  else if (strcmp(cad, "VERDE") == 0)
+  else if (str.compare("VERDE") == 0 )
     c = PColor::VERDE;
-  else if (strcmp(cad, "AZUL") == 0)
+  else if (str.compare("AZUL") == 0 )
     c = PColor::AZUL;
-  else if (strcmp(cad, "AMARILLO") == 0)
+  else if (str.compare("AMARILLO") == 0 )
     c = PColor::AMARILLO;
-  else if (strcmp(cad, "MAGENTA") == 0)
+  else if (str.compare("MAGENTA") == 0 )
     c = PColor::MAGENTA;
-  else if (strcmp(cad, "CYAN") == 0)
+  else if (str.compare("CYAN") == 0 )
     c = PColor::CYAN;
-  else if (strcmp(cad, "BLANCO") == 0)
+  else if (str.compare("BLANCO") == 0 )
     c = PColor::BLANCO;
   else
     c = PColor::ROJO;
