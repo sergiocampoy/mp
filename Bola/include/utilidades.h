@@ -1,3 +1,6 @@
+//Alumno1: Campoy Maldonado, Sergio
+//Alumno2: Antúnez Martinaitis, Óscar
+
 #ifndef UTILIDADES_H_
 #define UTILIDADES_H_
 
@@ -9,6 +12,6 @@ void printPartida(std::ostream& fsalida, float ancho, float alto, const Pelotas&
 
 const std::string colorToString(const PColor& c);
 
-const PColor stringToColor(std::string & cad);
+PColor stringToColor(std::string & cad);
 
 #endif

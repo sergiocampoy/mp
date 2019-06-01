@@ -1,3 +1,6 @@
+//Alumno1: Campoy Maldonado, Sergio
+//Alumno2: Antúnez Martinaitis, Óscar
+
 #ifndef SIMULADOR_H_
 #define SIMULADOR_H_
 

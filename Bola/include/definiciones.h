@@ -1,3 +1,6 @@
+//Alumno1: Campoy Maldonado, Sergio
+//Alumno2: Antúnez Martinaitis, Óscar
+
 #ifndef DEFINICIONES_H_
 #define DEFINICIONES_H_
 
@@ -13,8 +16,7 @@ enum class PColor {
 };
 
 // TOGGLES
-const bool FISICAS = false;
-const bool LOAD = false;
+const bool FISICAS = false; // Activa gravedad y rozamiento "realista"
 
 // Físicas
 const float FACTOR = 0.97; // Rebote

@@ -1,3 +1,6 @@
+//Alumno1: Campoy Maldonado, Sergio
+//Alumno2: Antúnez Martinaitis, Óscar
+
 #ifndef PELOTA_H_
 #define PELOTA_H_
 

@@ -45,6 +45,7 @@ bool colisionado(const Pelota& una, const Pelota& otra) {
  * @param otra Segunda pelota
  */
 void colisionar(int ancho, int alto, Pelota& una, Pelota& otra) {
+  // Intercambiamos las velocidades de las pelotas
   float dx = una.getDx();
   una.setDx(otra.getDx());
   otra.setDx(dx);
@@ -52,7 +53,8 @@ void colisionar(int ancho, int alto, Pelota& una, Pelota& otra) {
   float dy = una.getDy();
   una.setDy(otra.getDy());
   otra.setDy(dy);
-  
+
+  // Evita que las pelotas se "enganchen"
   while(colisionado(una, otra)){
     mover(ancho, alto, una);
     mover(ancho, alto, otra);
@@ -113,7 +115,8 @@ void mover(int ancho, int alto, Pelotas& pelotas) {
 
       if (i != j && colisionado(pelotas[i], pelotas[j])) {
         if (pelotas[i] != pelotas[j]) {
-          choque = true; // un poco ortopédico, pero funciona
+          // Hace que deje de comprobar colisiones (evita except de operator[])
+          choque = true;
 
           //Cuando son una es verde y otra es roja
           if (pelotas[i].getColor() == PColor::VERDE) {
@@ -123,7 +126,12 @@ void mover(int ancho, int alto, Pelotas& pelotas) {
           }
 
         } else {
-          //Cuando son verdes
+          /*
+          Cuando las pelotas son verdes generamos una nueva pelota de forma
+          aleatoria que no esté "encima" de otra. Si lo esta, lo intentamos de
+          nuevo. No se generara una pelota si hay MAX_PEL pelotas en la
+          pantalla
+          */
           if (pelotas[i].getColor() == PColor::VERDE && pelotas.util < MAX_PEL) {
             Pelota aux;
             bool choca;
@@ -167,6 +175,7 @@ void printPartida(std::ostream& fsalida, float ancho, float alto, const Pelotas&
 /**
  * @brief convierte de PColor a char[]
  * @param c
+ * @return string
  */
 const std::string colorToString(const PColor& c){
   std::string color;
@@ -195,11 +204,12 @@ const std::string colorToString(const PColor& c){
 
 /**
  * @brief convierte de char[] a PColor
- * @param cad
+ * @param str
+ * @return PColor
  */
-const PColor stringToColor(std::string & str){
+PColor stringToColor(std::string & str){
   PColor c;
-  
+
   if (str.compare("NEGRO") == 0 )
     c = PColor::NEGRO;
   else if (str.compare("VERDE") == 0 )

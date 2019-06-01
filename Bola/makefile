@@ -3,7 +3,7 @@
 
 # Definición de macros para definir las carpetas de trabajo
 BIN=./bin
-OBJ=./bin
+OBJ=./obj
 SRC=./src
 INC=./include
 LIB=./lib
@@ -14,7 +14,7 @@ DOC=./doc
 # -g compila en modo "depuración"
 OPT= -std=c++11 -Wall -g
 # Nombre de la práctica
-PRJ=bola
+PRJ=Final2
 
 # Las macros se usan en las reglas del makefile como si fuesen variables
 # que se sustituyen por su valor definido anteriormente

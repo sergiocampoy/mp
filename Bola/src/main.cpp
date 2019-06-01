@@ -17,14 +17,17 @@ using namespace miniwin;
 int main() {
   srand(time(0));
   Simulador partida("data/pelotas.txt");
+
+  // Loop principal
   while (tecla() != ESCAPE) {
     partida.step(1);
     pintar(partida, 25);
   }
+  // Guarda la partida
   bool ok = partida.salvar("./data/salida.txt");
-  if (!ok)
-      std::cerr << "Error de escritura";
+  if (!ok) std::cerr << "Error de escritura";
   
+  // Comprobaciones de la sobrecarga de operadores
   Pelotas local = partida.getActual();
   std::cout << "Estado final: \n";
   std::cout << local << std::endl;
@@ -35,69 +38,7 @@ int main() {
       std::cout << "Iguales \n";
   else
       std::cout << "Diferentes \n";
-    
-  std::ofstream finale;
-  finale.open("data/finale.txt");
-  finale << "Original: \n" << partida.getOriginal() << std::endl << std::endl;
-  finale << "Actual: \n" <<partida.getActual() << std::endl;
-  finale.close();
-  
-  
-  //vcierra();
-  //delete partida;
-  return 0;
-}
-
-//Version antigua
-/*
-int main() {
-  // Inicializa la semilla para aleatorio()
-  srand(time(0));
-
-  // Variables auxiliares para la lectura
-  char cad[64];
-  float ancho, alto;
-
-  Pelotas partida(1);
-
-	// Lectura del fichero
-  std::ifstream fentrada;
-  if (LOAD){
-    fentrada.open("data/salida.txt");
-  } else {
-    fentrada.open(FICHERO);
-  }
-  if (fentrada) {
-    fentrada >> cad;
-    if (strcmp(cad, PALABRA_CLAVE) == 0) {
-      fentrada >> ancho >> alto;
-      fentrada >> partida;
-    } else {
-      std::cerr << "El fichero no es adecuado" << std::endl;
-      exit(1);
-    }
-  } else {
-    std::cerr << "Error de apertura del fichero" << std::endl;
-    exit(1);
-  }
-  fentrada.close();
-  vredimensiona(ancho, alto);
-
-  while (tecla() != ESCAPE) {
-    borra();
-    pintar(partida);
-    mover(ancho, alto, partida);
-    refresca();
-    espera(25);
-  }
-
-  std::ofstream fsalida;
-  fsalida.open("data/salida.txt");
-  printPartida(fsalida, ancho, alto, partida);
-  fsalida.close();
 
   vcierra();
-
   return 0;
 }
-*/

@@ -73,10 +73,7 @@ bool Simulador::salvar(const char* fichero)const {
       fsalida << actual[i] << std::endl;
     }
     flag = true;
-  } /*else {
-    std::cerr << "Error en la apertura del fichero" << std::endl;
-    exit(1);
-  }*/
+  }
   fsalida.close();
   return flag;
 }
