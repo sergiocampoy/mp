@@ -9,15 +9,15 @@
 #include <fstream>
 #include <iostream>
 
-float Pelota::aleatorio(float tope) {
-  return (rand() % (int)(tope));
+float Pelota::aleatorio(float min, float max) {
+  return (min + rand() % (int)(max - min));
 }
 
 Pelota::Pelota() {
-  x = aleatorio(MIN_X);
-  y = aleatorio(MIN_Y);
-  dx = aleatorio(MAX_VEL);
-  dy = aleatorio(MAX_VEL);
+  x = aleatorio(0, MIN_X);
+  y = aleatorio(0, MIN_Y);
+  dx = aleatorio(-MAX_VEL, MAX_VEL);
+  dy = aleatorio(-MAX_VEL, MAX_VEL);
   radio = 30;
   c = PColor::VERDE;
 }

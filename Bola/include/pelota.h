@@ -23,6 +23,7 @@ private:
   PColor c; // Color de la pelota
   // Métodos privados
   float aleatorio(float tope);
+  float aleatorio(float, float);
 public:
   // Constructores
   Pelota();
